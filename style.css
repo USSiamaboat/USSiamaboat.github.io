@@ -16,6 +16,12 @@ body {
 	padding: 0rem 1.5rem;
 }
 
+main {
+	max-width: 90rem;
+	padding: 0rem 10rem;
+	margin: auto;
+}
+
 a {
 	text-decoration: none;
 	color: unset;
@@ -48,7 +54,8 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .glass-panel.clickable {
-	transition: background-color 0.15s linear, box-shadow 0.15s ease;
+	transition: background-color 0.15s linear,
+				box-shadow 0.15s ease;
 	cursor: pointer;
 }
 
@@ -123,6 +130,66 @@ nav .main-bar a:not(a:nth-child(1))::before {
 	transition: width 0.3s ease;
 }
 
-nav .main-bar a:not(a:nth-child(1)):hover::before, nav .main-bar a:not(a:nth-child(1)).active::before {
+nav .main-bar a:not(a:nth-child(1)):hover::before,
+nav .main-bar a:not(a:nth-child(1)).active::before {
 	width: 100%;
+}
+
+/* Hero */
+
+#hero {
+	position: relative;
+	height: 45rem;
+	margin: 0rem -3rem;
+	font-size: 4rem;
+	padding-top: 25rem;
+}
+
+#hero p:nth-child(1) {
+	font-size: 5rem;
+	margin-bottom: 1rem;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg) scale(1);
+	}
+
+	50% {
+		transform: rotate(180deg) scale(0.9);
+	}
+
+	100% {
+		transform: rotate(360deg) scale(1);
+	}
+}
+
+#gradient-blur {
+	z-index: -1;
+	position: absolute;
+	filter: blur(11rem);
+	width: 37rem;
+	height: 37rem;
+	right: 5rem;
+	top: 20rem;
+}
+
+#gradient-blur div {
+	position: absolute;
+	top: calc(50% - 10rem);
+	width: 35rem;
+	height: 20rem;
+	border-radius: 3rem;
+}
+
+#square1 {
+	background-color: rgba(112, 0, 255, 0.5);
+	animation: spin infinite 7s linear;
+	left: calc(50% - 10rem);
+}
+
+#square2 {
+	background-color: rgba(78, 138, 255, 0.5);
+	animation: spin infinite reverse 7.3s linear;
+	left: calc(50% - 20rem);
 }
