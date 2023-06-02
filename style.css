@@ -1,20 +1,30 @@
 /* Main Styles */
 * {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	font-family: 'Inter', sans-serif;
+}
+
+:root {
+	font-size: 10px;
 }
 
 body {
 	position: relative;
 	overflow-y: scroll;
 	overflow-x: hidden;
+	padding: 0rem 1.5rem;
+}
+
+a {
+	text-decoration: none;
+	color: unset;
 }
 
 /* Scrollbar */
 body::-webkit-scrollbar {
 	position: absolute;
-  width: 8px;
+  width: .8rem;
 }
  
 body::-webkit-scrollbar-track {
@@ -23,30 +33,96 @@ body::-webkit-scrollbar-track {
  
 body::-webkit-scrollbar-thumb {
   background-color: #aaaaaa;
-	border-radius: 4px;
+	border-radius: .4rem;
 }
 
 body::-webkit-scrollbar-thumb:hover {
 	background-color: #888888;
 }
 
-/* Animated Underline */
-.underline {
+/* Glass Panel */
+.glass-panel {
+	background-color: rgba(244, 246, 250, 0.8);
+	box-shadow: 0rem .2rem .4rem rgba(0, 0, 0, 0.25);
+	border-radius: 1rem;
+}
+
+.glass-panel.clickable {
+	transition: background-color 0.15s linear, box-shadow 0.15s ease;
+	cursor: pointer;
+}
+
+.glass-panel.clickable:hover {
+	background-color: rgba(221, 227, 238, 0.8);
+}
+
+.glass-panel.clickable:active {
+	background-color: rgba(221, 227, 238, 0.8);
+	box-shadow: 0rem .1rem .2rem rgba(0, 0, 0, 0.5);
+}
+
+/* icon-container */
+.icon-container {
+	display: grid;
+}
+
+.icon-container img {
+	width: 5rem;
+}
+
+/* Nav */
+nav {
+	height: 5rem;
+	max-width: 110rem;
+	display: grid;
+	grid-template-columns: auto repeat(3, min-content);
+	gap: 1.2rem;
+	margin-top: 1.5rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+nav .main-bar {
+	display: grid;
+	grid-template-columns: auto repeat(4, min-content);
+	padding: 0rem 1.5rem;
+	gap: 2rem;
+	align-items: center;
+}
+
+nav .main-bar a {
+	font-size: 2rem;
+	color: rgb(74, 74, 75);
+	transition: color 0.1s linear;
+}
+
+nav .main-bar a.inactive {
+	color: rgb(120, 120, 120);
+}
+
+nav .main-bar a:nth-child(1) {
+	font-size: 2.2rem;
+	font-weight: bold;
+}
+
+/* Nav Link Underline */
+
+nav .main-bar a:not(a:nth-child(1)) {
 	display: block;
 	width: max-content;
 	position: relative;
 }
 
-.underline::before {
+nav .main-bar a:not(a:nth-child(1))::before {
 	content: '';
 	width: 0%;
 	position: absolute;
-	bottom: -1px;
-	height: 2px;
-	background-color: var(--underline-color);
+	bottom: -.1rem;
+	height: .2rem;
+	background-color: rgb(74, 74, 75);
 	transition: width 0.3s ease;
 }
 
-.underline:hover::before {
+nav .main-bar a:not(a:nth-child(1)):hover::before, nav .main-bar a:not(a:nth-child(1)).active::before {
 	width: 100%;
 }
