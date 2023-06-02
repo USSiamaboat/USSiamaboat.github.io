@@ -3,10 +3,16 @@
 	margin: 0;
 	padding: 0;
 	font-family: 'Inter', sans-serif;
+	-webkit-tap-highlight-color: transparent;
 }
 
 :root {
 	font-size: 10px;
+}
+
+html {
+	width: 100vw;
+	overflow-x: hidden;
 }
 
 body {
@@ -22,9 +28,25 @@ main {
 	margin: auto;
 }
 
+@media (max-width: 800px) {
+	main {
+		padding: 0rem 2rem;
+	}
+}
+
 a {
 	text-decoration: none;
 	color: unset;
+}
+
+.mobile {
+	display: none;
+}
+
+@media (max-width: 800px) {
+	.mobile {
+		display: block;
+	}
 }
 
 /* Scrollbar */
@@ -112,6 +134,85 @@ nav .main-bar a:nth-child(1) {
 	font-weight: bold;
 }
 
+@media (max-width: 800px) {
+	nav {
+		grid-template-columns: auto min-content;
+		position: relative;
+	}
+
+	nav .main-bar {
+		grid-template-columns: auto;
+	}
+
+	nav .main-bar a:not(a:nth-child(1)) {
+		display: none !important;
+	}
+
+	nav .clickable:not(.mobile) {
+		display: none;
+	}
+
+	#mobile-menu {
+		position: absolute;
+		z-index: 1;
+		top: calc(5rem + 1.2rem);
+		right: 0;
+		transform: translateX(calc(100% + 1.5rem));
+		transition: transform 0.2s ease-in-out;
+		padding: 1.5rem;
+		padding-bottom: 1rem;
+		display: grid;
+		grid-template-areas:
+			'a a a'
+			's s s'
+			'w w w'
+			'p p p'
+			'd d d'
+			'l g m';
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(4, 1fr) min-content;
+		gap: 1rem;
+		column-gap: 0.4rem;
+	}
+
+	#mobile-menu a {
+		font-size: 2.2rem;
+	}
+
+	#mobile-menu a:nth-child(1) {
+		grid-area: a;
+	}
+
+	#mobile-menu a:nth-child(2) {
+		grid-area: s;
+	}
+
+	#mobile-menu a:nth-child(3) {
+		grid-area: w;
+	}
+
+	#mobile-menu a:nth-child(4) {
+		grid-area: p;
+	}
+
+	#mobile-menu .divider {
+		grid-area: d;
+		height: 0.4rem;
+		width: 100%;
+		background-color: rgb(217, 217, 217);
+	}
+
+	#mobile-menu img {
+		margin-top: -0.5rem;
+		width: 5rem;
+	}
+
+	#mobile-menu-toggle.active + #mobile-menu {
+		transform: translateX(0);
+		display: grid;
+	}
+}
+
 /* Nav Link Underline */
 
 nav .main-bar a:not(a:nth-child(1)) {
@@ -150,6 +251,19 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 	margin-bottom: 1rem;
 }
 
+@media (max-width: 800px) {
+	#hero {
+		margin: 0;
+		padding-top: 20rem;
+		font-size: 4rem;
+	}
+
+	#hero p:nth-child(1) {
+		font-size: 5rem;
+		margin-bottom: 1rem;
+	}
+}
+
 @keyframes spin {
 	0% {
 		transform: rotate(0deg) scale(1);
@@ -172,6 +286,15 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 	height: 37rem;
 	right: 5rem;
 	top: 20rem;
+}
+
+@media (max-width: 800px) {
+	#gradient-blur {
+		filter: blur(12rem);
+		opacity: 0.8;
+		right: 0;
+		top: 5rem;
+	}
 }
 
 #gradient-blur div {
