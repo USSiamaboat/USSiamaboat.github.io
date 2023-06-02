@@ -70,7 +70,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 /* Glass Panel */
 .glass-panel {
-	background-color: rgba(244, 246, 250, 0.8);
+	background-color: rgba(244, 246, 250, 0.9);
 	box-shadow: 0rem .2rem .4rem rgba(0, 0, 0, 0.25);
 	border-radius: 1rem;
 }
@@ -81,12 +81,14 @@ body::-webkit-scrollbar-thumb:hover {
 	cursor: pointer;
 }
 
-.glass-panel.clickable:hover {
-	background-color: rgba(221, 227, 238, 0.8);
+@media (hover:hover) and (pointer:fine) {
+	.glass-panel.clickable:hover {
+		background-color: rgba(221, 227, 238, 0.9);
+	}
 }
 
 .glass-panel.clickable:active {
-	background-color: rgba(221, 227, 238, 0.8);
+	background-color: rgba(221, 227, 238, 0.9);
 	box-shadow: 0rem .1rem .2rem rgba(0, 0, 0, 0.5);
 }
 
