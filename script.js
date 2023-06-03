@@ -41,18 +41,19 @@ let newWord = true
 let deleteStack = []
 
 const fadeIn = [
-	{ opacity: 0 },
-	{ opacity: 1 },
+	{ opacity: 0, transform: "translateX(30%)" },
+	{ opacity: 1, transform: "translateX(0%)" },
 ]
 
 const fadeOut = [
-	{ opacity: 1 },
-	{ opacity: 0 },
+	{ opacity: 1, transform: "translateX(0%)" },
+	{ opacity: 0, transform: "translateX(50%)" },
 ]
 
 const timing = {
 	duration: fadeDuration,
 	iterations: 1,
+	easing: "ease-in-out",
 }
 
 function stepIndices() {
