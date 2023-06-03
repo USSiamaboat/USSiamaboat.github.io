@@ -248,11 +248,29 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 	position: relative;
 	height: 45rem;
 	margin: 0rem -3rem;
-	font-size: 4rem;
 	padding-top: 25rem;
 }
 
-#hero p:nth-child(1) {
+#hero-desc {
+	font-size: 0;
+}
+
+#hero-desc .word {
+	display: inline-block;
+	white-space: nowrap;
+	margin-right: 1.5rem;
+}
+
+#hero-desc .word p {
+	font-size: 4rem;
+	display: inline-block;
+}
+
+#hero-desc .space {
+	width: 1.5rem;
+}
+
+#hero > p:nth-child(1) {
 	font-size: 5rem;
 	margin-bottom: 1rem;
 }
@@ -261,12 +279,19 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 	#hero {
 		margin: 0;
 		padding-top: 20rem;
-		font-size: 4rem;
 	}
 
-	#hero p:nth-child(1) {
-		font-size: 5rem;
+	#hero > p:nth-child(1) {
+		font-size: 4.5rem;
 		margin-bottom: 1rem;
+	}
+
+	#hero-desc .word p {
+		font-size: 3rem;
+	}
+
+	#hero-desc .word {
+		margin-right: 1rem;
 	}
 }
 
