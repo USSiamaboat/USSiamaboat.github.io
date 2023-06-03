@@ -50,6 +50,11 @@ a {
 	}
 }
 
+.section-header {
+	font-weight: bold;
+	font-size: 3rem;
+}
+
 /* Scrollbar */
 body::-webkit-scrollbar {
 	position: absolute;
@@ -346,4 +351,95 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 	background-color: rgba(78, 138, 255, 0.5);
 	animation: spin infinite reverse 7.3s linear;
 	left: calc(50% - 20rem);
+}
+
+/* About */
+
+#about {
+	display: grid;
+	gap: 2rem;
+	margin-bottom: 20rem;
+}
+
+#about .container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2rem;
+}
+
+#about .container .left {
+	display: grid;
+	grid-template-areas:
+		'a a'
+		'b b'
+		'c d';
+	grid-template-columns: 1fr 1fr;
+	gap: 1.5rem;
+}
+
+#about .container .left p {
+	font-size: 2rem;
+}
+
+#about .container .left p:nth-child(1) {
+	grid-area: a;
+}
+
+#about .container .left p:nth-child(2) {
+	grid-area: b;
+}
+
+#about .container .left .glass-panel.clickable {
+	font-size: 1.8rem;
+	text-align: center;
+	font-weight: bold;
+	padding: 0.8rem;
+}
+
+#about .container .right {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: min-content min-content;
+	align-content: center;
+	row-gap: 1rem;
+	column-gap: 4rem;
+}
+
+#about .container .right p {
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: rgb(74, 74, 75);
+}
+
+#about .container .right p.big-number {
+	font-size: 6rem;
+	font-weight: bold;
+	color: black;
+}
+
+@media (max-width: 800px) {
+	#about {
+		text-align: center;
+	}
+
+	#about .container {
+		grid-template-columns: 1fr;
+		grid-template-rows: min-content min-content;
+		grid-template-areas:
+			'numbers'
+			'text';
+		gap: 5rem;
+	}
+
+	#about .container .left {
+		grid-area: text;
+		max-width: 45rem;
+		margin: auto;
+		gap: 2rem;
+	}
+
+	#about .container .right {
+		grid-area: numbers;
+	}
 }
