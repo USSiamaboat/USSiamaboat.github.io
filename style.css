@@ -445,3 +445,54 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 		grid-area: numbers;
 	}
 }
+
+/* Skills */
+
+#skills {
+	--icon-size: 8.5rem;
+	display: grid;
+	gap: 2rem;
+}
+
+#skills .container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, var(--icon-size));
+	gap: 3rem;
+	row-gap: 3.5rem;
+	justify-content: center;
+	padding-bottom: 2.5rem;
+}
+
+#skills .container p.label {
+	position: absolute;
+	margin-top: .5rem;
+	width: var(--icon-size);
+	font-size: 1.6rem;
+	font-weight: bold;
+	text-align: center;
+}
+
+#skills .container .icon-container {
+	width: var(--icon-size);
+}
+
+#skills .container img {
+	width: var(--icon-size);
+	height: var(--icon-size);
+}
+
+@media (min-width: 1100px) {
+	#skills .container {
+		grid-template-columns: repeat(7, var(--icon-size));
+	}
+}
+
+@media (max-width: 800px) {
+	#skills {
+		--icon-size: 7.5rem;
+	}
+
+	#skills .container p.label {
+		font-size: 1.4rem;
+	}
+}
