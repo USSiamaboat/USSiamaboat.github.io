@@ -643,11 +643,13 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 #publications {
 	display: grid;
 	gap: 4rem;
+	margin-bottom: 10rem;
 }
 
 .publication {
 	display: grid;
 	gap: 0.75rem;
+	width: 100%;
 }
 
 .publication .meta {
