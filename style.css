@@ -681,3 +681,35 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 	padding: .75rem;
 	text-align: center;
 }
+
+/* Footer */
+
+footer {
+	display: grid;
+	justify-items: center;
+	margin: 1.5rem auto;
+	max-width: min(110rem, 100vw - 3rem);
+	padding: 1rem 0;
+}
+
+footer .icons {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(3, min-content);
+}
+
+footer .icons .icon-container {
+	cursor: pointer;
+	transition: opacity 0.2s linear;
+}
+
+footer p {
+	font-size: 1.4rem;
+	color: rgb(120, 120, 120)
+}
+
+@media (hover:hover) and (pointer:fine) {
+	footer .icons .icon-container:hover {
+		opacity: 0.8;
+	}
+}
