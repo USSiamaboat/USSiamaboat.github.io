@@ -503,6 +503,7 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 #works {
 	display: grid;
 	gap: 4rem;
+	margin-bottom: 15rem;
 }
 
 .work {
@@ -635,4 +636,46 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 		width: 7.5rem;
 		height: 7.5rem;
 	}
+}
+
+/* Publications */
+
+#publications {
+	display: grid;
+	gap: 4rem;
+}
+
+.publication {
+	display: grid;
+	gap: 0.75rem;
+}
+
+.publication .meta {
+	color: rgb(120, 120, 120);
+	font-size: 1.6rem;
+	white-space: pre;
+}
+
+.publication .title {
+	font-size: 2.4rem;
+}
+
+.publication .authors {
+	color: rgb(74, 74, 75);
+	font-size: 2rem;
+}
+
+.publication .buttons {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	max-width: 30rem;
+	gap: 2rem;
+	margin: 1rem 0;
+}
+
+.publication .clickable {
+	font-size: 2rem;
+	font-weight: bold;
+	padding: .75rem;
+	text-align: center;
 }
