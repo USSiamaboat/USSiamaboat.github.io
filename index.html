@@ -12,7 +12,7 @@
 	<!-- Regular Meta -->
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	<link rel="shortcut icon" href="/Images/Favicon.png">
 	<title>Jeffrey Lu</title>
 	<meta name="description" content="Jeffrey Lu | Student, Developer, Researcher">
@@ -26,6 +26,27 @@
 	<link href="inter.css" rel="stylesheet" defer>
 </head>
 <body>
+
+	<dialog class="glass-panel">
+		<p class="title">Send a Message</p>
+
+		<div class="text-input">
+			<p class="label">Email</p>
+			<p class="char-limit" data-limit="50">0/50</p>
+			<textarea class="glass-panel" id="email" rows="1" maxlength="50" placeholder="name@website.com" data-enable-grammarly="false"></textarea>
+		</div>
+
+		<div class="text-input">
+			<p class="label">Message</p>
+			<p class="char-limit" data-limit="500">0/500</p>
+			<textarea class="glass-panel" id="message" rows="10" maxlength="500" placeholder="Tell me something interesting"></textarea>
+		</div>
+
+		<div class="buttons">
+			<div class="clickable">Cancel</div>
+			<div class="clickable">Send</div>
+		</div>
+	</dialog>
 
 	<nav>
 		<div class="main-bar glass-panel">

@@ -107,6 +107,104 @@ a {
 	width: 5rem;
 }
 
+/* Dialog */
+
+dialog {
+	top: 50%;
+	left: 50%;
+	border: none;
+	transform: translate(-50%, -50%);
+	padding: 1.5rem;
+	padding-top: 2rem;
+	min-width: 30rem;
+	width: 70%;
+	max-width: 50rem;
+	height: min-content;
+	align-content: start;
+	gap: 2rem;
+	display: none;
+}
+
+dialog[open] {
+	display: grid;
+}
+
+dialog::backdrop {
+	background-color: rgb(60, 60, 60, 0.5);
+	backdrop-filter: blur(.4rem);
+	-webkit-backdrop-filter: blur(.4rem);
+	height: 200vh;
+}
+
+dialog .title {
+	font-size: 3rem;
+	font-weight: bold;
+}
+
+dialog .text-input {
+	display: grid;
+	grid-template-columns: auto max-content;
+	grid-template-rows: min-content min-content;
+	grid-template-areas:
+		"label limit"
+		"area area";
+	align-items: end;
+	gap: .5rem;
+}
+
+dialog .text-input .label {
+	font-size: 2.2rem;
+	padding-left: .5rem;
+}
+
+dialog .text-input .char-limit {
+	font-size: 1.6rem;
+	padding-right: .5rem;
+	color: rgb(120, 120, 120);
+	text-align: right;
+}
+
+dialog .text-input textarea {
+	grid-area: area;
+	border: none;
+	resize: none;
+	outline: none;
+	padding: 1rem;
+	height: min-content;
+	font-size: 1.4rem;
+}
+
+dialog .text-input .buttons {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2rem;
+}
+
+dialog .text-input .buttons .clickable {
+	padding: 1rem;
+	color: white;
+	font-weight: bold;
+	font-size: 1.8rem;
+	text-align: center;
+	border-radius: 1rem;
+	cursor: pointer;
+	transition: filter 0.2s linear;
+}
+
+dialog .text-input .buttons .clickable:nth-child(1) {
+	background-color: rgb(255, 78, 78);
+}
+
+dialog .text-input .buttons .clickable:nth-child(2) {
+	background-color: rgb(78, 138, 255);
+}
+
+@media (hover:hover) and (pointer:fine) {
+	dialog .text-input .buttons .clickable:hover {
+		filter: brightness(0.9);
+	}
+}
+
 /* Nav */
 nav {
 	position: fixed;
