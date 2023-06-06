@@ -63,6 +63,12 @@ a {
 	font-size: 3rem;
 }
 
+@media (max-width: 800px) {
+	.section-header {
+		text-align: center;
+	}
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
 	width: 0 !important;
