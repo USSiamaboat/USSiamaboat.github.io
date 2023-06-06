@@ -59,9 +59,8 @@ function removeScrollElements() {
 	main.remove()
 }
 
-window.addEventListener("scroll", updateTarget)
-
 if (!mobile) {
+	window.addEventListener("scroll", updateTarget)
 	window.requestAnimationFrame(update)
 } else {
 	removeScrollElements()
