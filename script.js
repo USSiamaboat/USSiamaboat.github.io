@@ -66,6 +66,7 @@ if (!mobile) {
 }
 
 // Desktop Scrollto
+
 const scrollTos = Array.from(document.querySelectorAll("[data-scrollto]"))
 
 function getTargetY(el) {
@@ -81,6 +82,24 @@ if (!mobile) {
 		})
 	})
 }
+
+// Links
+
+const links = Array.from(document.querySelectorAll("[data-link]"))
+
+function goToURL(url) {
+	if (mobile && (url.substring(0, 1) == "#")) {
+		document.getElementById(url.substring(1)).scrollIntoView()
+	} else {
+		window.open(url, "_blank")
+	}
+}
+
+links.forEach(link => {
+	link.addEventListener("click", e => {
+		goToURL(link.getAttribute("data-link"))
+	})
+})
 
 // Hero Description
 
