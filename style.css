@@ -676,6 +676,12 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 	text-align: center;
 }
 
+@media (max-width: 450px) {
+	.publication .meta {
+		white-space: normal;
+	}
+}
+
 /* Footer */
 
 footer {
