@@ -6,6 +6,13 @@
 	-webkit-tap-highlight-color: transparent;
 }
 
+#scroll-container {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
 :root {
 	font-size: 10px;
 }
@@ -56,22 +63,8 @@ a {
 }
 
 /* Scrollbar */
-body::-webkit-scrollbar {
-	position: absolute;
-	width: .8rem;
-}
- 
-body::-webkit-scrollbar-track {
-  background-color: #dddddd;
-}
- 
-body::-webkit-scrollbar-thumb {
-  background-color: #aaaaaa;
-	border-radius: .4rem;
-}
-
-body::-webkit-scrollbar-thumb:hover {
-	background-color: #888888;
+::-webkit-scrollbar {
+	width: 0 !important;
 }
 
 /* Glass Panel */

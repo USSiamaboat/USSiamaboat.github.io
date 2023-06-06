@@ -1,3 +1,7 @@
+// Detect Mobile
+
+let mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+
 // Mobile Menu
 
 const mobileMenuToggle = document.getElementById("mobile-menu-toggle")
@@ -19,6 +23,49 @@ function closeMobileMenu(e) {
 }
 
 document.addEventListener("click", closeMobileMenu)
+
+// Smooth Scrolling
+
+const body = document.body;
+const main = document.getElementById("scroll-container");
+
+let targetY = 0
+let currY = targetY
+
+function updateTarget() {
+	targetY = window.pageYOffset
+	console.log(targetY)
+}
+
+function lin_interp(a, b, t) {
+	// Linear interpolation between a and b at time t in [0, 1]
+	return (1 - t) * a + t * b
+}
+
+function update() {
+	// Reduces the distance to the target by approximated exponential decay
+	body.style.height = `${main.clientHeight}px`
+
+	currY = lin_interp(currY, targetY, 0.1)
+	currY = Math.floor(currY * 100) / 100
+
+	main.style.transform = `translateY(-${currY}px)`
+
+  	window.requestAnimationFrame(update)
+}
+
+function removeScrollElements() {
+	body.append(...main.children)
+	main.remove()
+}
+
+window.addEventListener("scroll", updateTarget)
+
+if (!mobile) {
+	window.requestAnimationFrame(update)
+} else {
+	removeScrollElements()
+}
 
 // Hero Description
 
