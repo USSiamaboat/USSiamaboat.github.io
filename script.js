@@ -34,7 +34,6 @@ let currY = targetY
 
 function updateTarget() {
 	targetY = window.pageYOffset
-	console.log(targetY)
 }
 
 function lin_interp(a, b, t) {
@@ -64,6 +63,23 @@ if (!mobile) {
 	window.requestAnimationFrame(update)
 } else {
 	removeScrollElements()
+}
+
+// Desktop Scrollto
+const scrollTos = Array.from(document.querySelectorAll("[data-scrollto]"))
+
+function getTargetY(el) {
+	return el.getClientRects()[0]["y"] - 85 + currY
+}
+
+if (!mobile) {
+	scrollTos.forEach(el => {
+		el.addEventListener("click", e => {
+			const destinationID = e.target.getAttribute("data-scrollto")
+			const destination = document.getElementById(destinationID)
+			targetY = getTargetY(destination)
+		})
+	})
 }
 
 // Hero Description
