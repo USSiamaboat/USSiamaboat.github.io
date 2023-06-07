@@ -123,8 +123,6 @@ function submitMessage(email, message) {
 
 const mails = Array.from(document.querySelectorAll("[data-action='message']"))
 
-console.log(mails)
-
 mails.forEach(mail => {
 	mail.addEventListener("click", openModal)
 })
