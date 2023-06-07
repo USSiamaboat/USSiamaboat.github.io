@@ -131,8 +131,8 @@ mails.forEach(mail => {
 
 // Smooth Scrolling
 
-const body = document.body;
-const main = document.getElementById("scroll-container");
+const body = document.body
+const main = document.getElementById("scroll-container")
 
 let targetY = 0
 let currY = targetY
