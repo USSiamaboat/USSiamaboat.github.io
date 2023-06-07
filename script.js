@@ -8,7 +8,9 @@ const mobileMenuToggle = document.getElementById("mobile-menu-toggle")
 let isMobileMenuOpen = false
 
 function toggleMobileMenu(e) {
-	e.stopPropagation()
+	if (e.currentTarget.id == "mobile-menu-toggle") {
+		e.stopPropagation()
+	}
 
 	mobileMenuToggle.classList.toggle("active")
 	isMobileMenuOpen = !isMobileMenuOpen
