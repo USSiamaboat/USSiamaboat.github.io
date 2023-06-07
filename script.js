@@ -184,6 +184,11 @@ if (!mobile) {
 			const destinationID = e.target.getAttribute("data-scrollto")
 			const destination = document.getElementById(destinationID)
 			targetY = getTargetY(destination)
+			window.scrollTo({
+				top: targetY,
+				left: 0,
+				behavior: "instant"
+			})
 		})
 	})
 }
