@@ -3,19 +3,19 @@
 <head>
 	<!-- Open graph meta -->
 	<meta property="og:title" content="Jeffrey Lu"/>
-	<meta property="og:description" content="Jeffrey Lu | Student, Developer, Designer"/>
-	<meta property="og:url" content="https://JeffreyPLu.github.io"/>
-	<!-- <meta property="og:image" content="https://JeffreyPLu.github.io/Images/Thumbnail2.png"/> -->
-	<meta property="og:image" content="https://JeffreyPLu.github.io/Images/Small Thumbnail.png"/>
+	<meta property="og:description" content="Jeffrey Lu | Student, Developer, Researcher"/>
+	<meta property="og:url" content="https://jeffreylu.me"/>
+
+	<!-- <meta property="og:image" content="placeholder"/> -->
 	<meta property="og:type" content="website"/>
 
 	<!-- Regular Meta -->
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	<link rel="shortcut icon" href="/Images/Favicon.png">
 	<title>Jeffrey Lu</title>
-	<meta name="description" content="Jeffrey Lu | Student, Developer, Designer">
+	<meta name="description" content="Jeffrey Lu | Student, Developer, Researcher">
 
 	<!-- CSS and JS -->
 	<link rel="stylesheet" href="style.css">
@@ -26,230 +26,311 @@
 	<link href="inter.css" rel="stylesheet" defer>
 </head>
 <body>
-	<div id="scroll-reminder">
-		<div class="arrow"></div>
-		<p>Scroll</p>
-	</div>
-	<div class="main">
-		<div class="nav">
-			<h3 class="icon">JL</h3>
 
-			<div class="spacer"></div>
+	<dialog class="glass-panel">
+		<p class="title">Send a Message</p>
 
-			<h3 class="link underline active">HOME</h3>
-			<h3 class="link underline">ABOUT</h3>
-			<h3 class="link underline">RESEARCH</h3>
+		<div class="text-input">
+			<p class="label">Email</p>
+			<p class="char-limit" data-limit="50">0/50</p>
+			<textarea class="glass-panel" id="email" rows="1" maxlength="50" placeholder="name@website.com" data-enable-grammarly="false"></textarea>
 		</div>
-		
-		<page id="HOME">
-			<div class="header">
-				<h1 class="name">Jeffrey Lu</h1>
-				<h2 class="descriptions" id="descriptions"></h2>
-			</div>
 
-			<div class="skills section">
-				<h3>Skills</h3>
-				<p>
-					My primary focus is learning AI and ML technologies, but I also do a lot of cross-platform web design and development.
-					<br><br>
-					I have worked with frontend web technologies like HTML, CSS, and JS for over 3 years. I have 2 years of experience with Python, both for backend web development and machine learning with TensorFlow.
-					<br><br>
-					I also enjoy technically challenging  “miniprojects” that solve unusual or niche problems by applying aspects of other fields to computer science.
-				</p>
-				<div class="cloud" id="cloud">
-					<div class="image-container">
-						<img alt="CSS" src="/Images/CSS Logo.png">
-						<div class="tooltip-container"><p class="tooltip">CSS</p></div>
-					</div>
-			
-					<div class="image-container">
-						<img alt="Django" src="/Images/Django Logo.png">
-						<div class="tooltip-container"><p class="tooltip">Django</p></div>
-					</div>
-			
-					<div class="image-container">
-						<img alt="Figma" src="/Images/Figma Logo.png">
-						<div class="tooltip-container"><p class="tooltip">Figma</p></div>
-					</div>
-			
-					<div class="image-container">
-						<img alt="Google Apps Script" src="/Images/GAS Logo.png">
-						<div class="tooltip-container"><p class="tooltip">Google Apps Script</p></div>
-					</div>
-			
-					<div class="image-container">
-						<img alt="Git" src="/Images/Git Logo.png">
-						<div class="tooltip-container"><p class="tooltip">Git</p></div>
-					</div>
-			
-					<div class="image-container">
-						<img alt="Github" src="/Images/Github Logo.png">
-						<div class="tooltip-container"><p class="tooltip">Github</p></div>
-					</div>
-			
-					<div class="image-container">
-						<img alt="Heroku" src="/Images/Heroku Logo.png">
-						<div class="tooltip-container"><p class="tooltip">Heroku</p></div>
-					</div>
-			
-					<div class="image-container">
-						<img alt="HTML" src="/Images/HTML Logo.png">
-						<div class="tooltip-container"><p class="tooltip">HTML</p></div>
-					</div>
-			
-					<div class="image-container">
-						<img alt="Java" src="/Images/Java Logo.png">
-						<div class="tooltip-container"><p class="tooltip">Java</p></div>
-					</div>
-			
-					<div class="image-container">
-						<img alt="Javascript" src="/Images/JavaScript Logo.png">
-						<div class="tooltip-container"><p class="tooltip">Javascript</p></div>
-					</div>
-			
-					<div class="image-container">
-						<img alt="Postgres" src="/Images/Postgres Logo.png">
-						<div class="tooltip-container"><p class="tooltip">Postgres</p></div>
-					</div>
-			
-					<div class="image-container">
-						<img alt="Python" src="/Images/Python Logo.png">
-						<div class="tooltip-container"><p class="tooltip">Python</p></div>
-					</div>
-			
-					<div class="image-container">
-						<img alt="Scikit Learn" src="/Images/Sklearn Logo.png">
-						<div class="tooltip-container"><p class="tooltip">Scikit Learn</p></div>
-					</div>
-			
-					<div class="image-container">
-						<img alt="Streamlit" src="/Images/Streamlit Logo.png">
-						<div class="tooltip-container"><p class="tooltip">Streamlit</p></div>
-					</div>
-			
-					<div class="image-container">
-						<img alt="Tensorflow" src="/Images/Tensorflow Logo.png">
-						<div class="tooltip-container"><p class="tooltip">Tensorflow</p></div>
-					</div>
+		<div class="text-input">
+			<p class="label">Message</p>
+			<p class="char-limit" data-limit="500">0/500</p>
+			<textarea class="glass-panel" id="message" rows="10" maxlength="500" placeholder="Tell me something interesting"></textarea>
+		</div>
+
+		<p id="form-error">Sending Failed: Bro thought he was him 💀</p>
+
+		<div class="buttons">
+			<div class="clickable">Cancel</div>
+			<div class="clickable">Send</div>
+		</div>
+	</dialog>
+
+	<nav>
+		<div class="main-bar glass-panel">
+			<a href="#hero" data-scrollto="hero">Jeffrey Lu</a>
+
+			<a href="#about" data-scrollto="about">About</a>
+			<a href="#skills" data-scrollto="skills">Skills</a>
+			<a href="#works" data-scrollto="works">Works</a>
+			<a href="#publications" data-scrollto="publications">Publications</a>
+		</div>
+
+		<div class="glass-panel clickable" data-link="https://www.linkedin.com/in/jeffrey-p-lu/">
+			<div class="icon-container">
+				<img src="Images/Linkedin.png">
+			</div>
+		</div>
+
+		<div class="glass-panel clickable" data-link="https://github.com/USSiamaboat">
+			<div class="icon-container">
+				<img src="Images/Github.png">
+			</div>
+		</div>
+
+		<div class="glass-panel clickable" data-action="message">
+			<div class="icon-container">
+				<img src="Images/Mail.png">
+			</div>
+		</div>
+
+		<div id="mobile-menu-toggle" class="glass-panel clickable mobile">
+			<div class="icon-container">
+				<img src="Images/Hamburger.png">
+			</div>
+		</div>
+
+		<div id="mobile-menu" class="glass-panel mobile">
+			<a href="#about">About</a>
+			<a href="#skills">Skills</a>
+			<a href="#works">Works</a>
+			<a href="#publications">Publications</a>
+
+			<div class="divider"></div>
+
+			<img src="Images/Linkedin.png" data-link="https://www.linkedin.com/in/jeffrey-p-lu/">
+			<img src="Images/Github.png" data-link="https://github.com/USSiamaboat">
+			<img src="Images/Mail.png" data-action="message">
+		</div>
+	</nav>
+
+	<div id="scroll-container">
+		<main>
+			<div id="hero">
+				<p>I'm <strong>Jeffrey</strong>,</p>
+				<div id="hero-desc">
+				</div>
+
+				<div id="gradient-blur">
+					<div id="square1"></div>
+					<div id="square2"></div>
 				</div>
 			</div>
+			
+			<div id="about">
+				<p class="section-header">About</p>
+				<div class="container">
+					<div class="left">
+						<p>I’m a high school student studying AI with a focus on NLP. I’m deeply interested in both the technical and ethical aspects of AI.</p>
 
-			<div class="projects section">
-				<h3>Projects</h3>
+						<p>I am also a full-stack web developer. I build websites and web apps for small software companies, school initiatives, and personal projects.</p>
 
-				<div class="project-card">
-					<h4>NLP Research</h4>
-					<h5>2022 - Now</h5>
-					<p>An ongoing research initiative to improve the ability of NLP AI to solve reading comprehension tasks</p>
-					<a class="underline" href="javascript:alert('Not ready yet!')"></a>
-					<div class="spacer"></div>
-					<div class="logos">
-						<img src="/Images/Python Logo.png" alt="Python">
-						<img src="/Images/Tensorflow Logo.png" alt="Tensorflow">
+						<div class="glass-panel clickable" data-link="#works" data-scrollto="works">Works</div>
+						<div class="glass-panel clickable" data-link="#publications" data-scrollto="publications">Publications</div>
+					</div>
+
+					<div class="right">
+						<p class="big-number">2+</p>
+						<p class="big-number">3+</p>
+						<p>Years&nbsp;of&nbsp;AI<br>experience</p>
+						<p>Years&nbsp;of <wbr>Web&nbsp;Dev<br>experience</p>
 					</div>
 				</div>
-
-				<div class="project-card">
-					<h4>Tuesday</h4>
-					<h5>2020 - Now</h5>
-					<p>A web app that helps students with work management by using AI to prioritize tasks (full rewrite in progress)</p>
-					<a class="underline" href="https://tues.tech">Open</a>
-					<div class="spacer"></div>
-					<div class="logos">
-						<img src="/Images/Django Logo.png" alt="Django">
-						<img src="/Images/Postgres Logo.png" alt="Postgres">
-						<img src="/Images/Tensorflow Logo.png" alt="Tensorflow">
-						<img src="/Images/HTML Logo.png" alt="HTML">
-						<img src="/Images/CSS Logo.png" alt="CSS">
-						<img src="/Images/JavaScript Logo.png" alt="JS">
-					</div>
-				</div>
-
-				<div class="project-card">
-					<h4>Skin Lesion Classifier</h4>
-					<h5>2021</h5>
-					<p>An image classification neural network and accompanying web app that helps determine if a skin lesion is harmful or not</p>
-					<a class="underline" href="javascript:alert('Not ready yet!')"></a>
-					<div class="spacer"></div>
-					<div class="logos">
-						<img src="/Images/Python Logo.png" alt="Python">
-						<img src="/Images/Tensorflow Logo.png" alt="Tensorflow">
-						<img src="/Images/Streamlit Logo.png" alt="Streamlit">
-					</div>
-				</div>
-
-				<div class="project-card">
-					<h4>Health Inequality Research</h4>
-					<h5>2022</h5>
-					<p>A short research paper finding and analyzing the correlations between socioeconomic status and health outcomes in the US</p>
-					<a class="underline" href="https://arxiv.org/abs/2212.04285">Read</a>
-					<div class="spacer"></div>
-					<div class="logos">
-						<img src="/Images/Python Logo.png" alt="Python">
-						<img src="/Images/Sklearn Logo.png" alt="Scikit Learn">
-					</div>
-				</div>
-
 			</div>
 
-			<div class="projects section">
-				<h3>Miniprojects</h3>
+			<div id="skills">
+				<p class="section-header">Skills</p>
 
-				<div class="project-card">
-					<h4>Doc Tracker</h4>
-					<h5>2022</h5>
-					<p>A simple and lightweight web app that automatically tracks who views shared documents and when they viewed them</p>
-					<a class="underline" href="javascript:alert('Not ready yet!')"></a>
-					<div class="spacer"></div>
-					<div class="logos">
-						<img src="/Images/GAS Logo.png" alt="Google Apps Script">
-						<img src="/Images/HTML Logo.png" alt="HTML">
-						<img src="/Images/CSS Logo.png" alt="CSS">
-						<img src="/Images/JavaScript Logo.png" alt="JS">
+				<div class="container">
+					<div class="glass-panel">
+						<div class="icon-container"><img src="/Images/Skill Icons/HTML.png"></div>
+						<p class="label">HTML</p>
+					</div>
+
+					<div class="glass-panel">
+						<div class="icon-container"><img src="/Images/Skill Icons/CSS.png"></div>
+						<p class="label">CSS</p>
+					</div>
+
+					<div class="glass-panel">
+						<div class="icon-container"><img src="/Images/Skill Icons/Javascript.png"></div>
+						<p class="label">Javascript</p>
+					</div>
+
+					<div class="glass-panel">
+						<div class="icon-container"><img src="/Images/Skill Icons/Python.png"></div>
+						<p class="label">Python</p>
+					</div>
+
+					<div class="glass-panel">
+						<div class="icon-container"><img src="/Images/Skill Icons/Django.png"></div>
+						<p class="label">Django</p>
+					</div>
+
+					<div class="glass-panel">
+						<div class="icon-container"><img src="/Images/Skill Icons/Postgres.png"></div>
+						<p class="label">Postgres</p>
+					</div>
+
+					<div class="glass-panel">
+						<div class="icon-container"><img src="/Images/Skill Icons/Heroku.png"></div>
+						<p class="label">Heroku</p>
+					</div>
+
+					<div class="glass-panel">
+						<div class="icon-container"><img src="/Images/Skill Icons/Figma.png"></div>
+						<p class="label">Figma</p>
+					</div>
+
+					<div class="glass-panel">
+						<div class="icon-container"><img src="/Images/Skill Icons/Java.png"></div>
+						<p class="label">Java</p>
+					</div>
+
+					<div class="glass-panel">
+						<div class="icon-container"><img src="/Images/Skill Icons/Streamlit.png"></div>
+						<p class="label">Streamlit</p>
+					</div>
+
+					<div class="glass-panel">
+						<div class="icon-container"><img src="/Images/Skill Icons/Sklearn.png"></div>
+						<p class="label">Sklearn</p>
+					</div>
+
+					<div class="glass-panel">
+						<div class="icon-container"><img src="/Images/Skill Icons/Tensorflow.png"></div>
+						<p class="label">Tensorflow</p>
+					</div>
+
+					<div class="glass-panel">
+						<div class="icon-container"><img src="/Images/Skill Icons/GAS.png"></div>
+						<p class="label">GAS</p>
+					</div>
+
+					<div class="glass-panel">
+						<div class="icon-container"><img src="/Images/Skill Icons/Git.png"></div>
+						<p class="label">Git</p>
 					</div>
 				</div>
-
-				<div class="project-card">
-					<h4>Logo Cloud</h4>
-					<h5>2022</h5>
-					<p>An application of the Fibonacci sphere algorithm and rotation matrices to make the logo cloud in the skills section of this site</p>
-					<a class="underline" href="https://github.com/JeffreyPLu/jeffreyplu.github.io/blob/main/script.js#L162">View Source</a>
-					<div class="spacer"></div>
-					<div class="logos">
-						<img src="/Images/JavaScript Logo.png" alt="JS">
-					</div>
-				</div>
-
-				<div class="project-card">
-					<h4>Wordle Bot</h4>
-					<h5>2022</h5>
-					<p>An algorithm that uses Google Ngrams and information theory to play Wordle in the browser through Selenium</p>
-					<a class="underline" href="javascript:alert('Not ready yet!')"></a>
-					<div class="spacer"></div>
-					<div class="logos">
-						<img src="/Images/Python Logo.png" alt="Python">
-					</div>
-				</div>
-				
 			</div>
-		</page>
 
-		<page id="ABOUT" class="hidden">
-			<p class="temp">Work in progress</p>
-		</page>
+			<div id="works">
+				<p class="section-header">Works</p>
 
-		<page id="RESEARCH" class="hidden">
-			<p class="temp">Work in progress</p>
-		</page>
+				<div class="work">
+					<div class="col1">
+						<div class="glass-panel icon-container">
+							<img src="Images/Works/Tuesday Logo.png">
+						</div>
+
+						<div class="glass-panel name">Tuesday</div>
+
+						<div class="glass-panel desc">A web app that helps students manage their work and develop executive functioning skills by prioritizing their tasks and visualizing their workload.</div>
+					</div>
+
+					<div class="col2">
+						<div class="glass-panel preview">
+							<img src="Images/Works/Tuesday Cluster.png">
+						</div>
+						
+						<div class="glass-panel clickable" data-link="https://tues.tech">Open</div>
+						<div class="glass-panel clickable" data-link="https://github.com/Tuestech/v2">Source</div>
+					</div>
+
+					<div class="col3 glass-panel">
+						<img src="Images/Skill Icons/Figma.png">
+						<img src="Images/Skill Icons/Javascript.png">
+						<img src="Images/Skill Icons/Django.png">
+						<img src="Images/Skill Icons/Postgres.png">
+						<img src="Images/Skill Icons/Python.png">
+						<img src="Images/Skill Icons/Heroku.png">
+					</div>
+				</div>
+
+				<div class="work wide-logo">
+					<div class="col1">
+						<div class="glass-panel">
+							<img src="Images/Works/Prepme Logo.png">
+						</div>
+
+						<div class="glass-panel desc">A web app that streamlines the college application process by providing an adaptive timeline of tasks and relevant resources in an integrated environment.</div>
+					</div>
+
+					<div class="col2">
+						<div class="glass-panel preview">
+							<img src="Images/Works/Prepme Preview.png">
+						</div>
+						
+						<div class="glass-panel clickable" data-link="https://prepme.us">Open</div>
+						<div class="glass-panel clickable" data-link="https://github.com/Prep-Me/mvp-landing-page">Source</div>
+					</div>
+
+					<div class="col3 glass-panel limit-3">
+						<img src="Images/Skill Icons/CSS.png">
+						<img src="Images/Skill Icons/Javascript.png">
+						<img src="Images/Skill Icons/HTML.png">
+					</div>
+				</div>
+			</div>
+
+			<div id="publications">
+				<p class="section-header">Publications</p>
+
+				<div class="publication">
+					<p class="meta">Opinion Article   —   2023</p>
+					<p class="title">Inside LLMs: Loneliness and Self-Awareness in AI Chatbots</p>
+					<p class="authors">Jeffrey Lu</p>
+					<div class="buttons">
+						<div class="glass-panel clickable" data-link="https://medium.com/@jeffrey.lu/loneliness-and-self-awareness-in-ai-chatbots-10c555c9a829">
+							Read
+						</div>
+					</div>
+				</div>
+
+				<div class="publication">
+					<p class="meta">Working Research Paper   —   2023</p>
+					<p class="title">Polytuplet Loss: A Reverse Approach to Training Reading Comprehension and Logical Reasoning Models</p>
+					<p class="authors">Jeffrey Lu, Ivan Rodriguez</p>
+					<div class="buttons">
+						<div class="glass-panel clickable" data-link="https://arxiv.org/abs/2304.01046">
+							Read
+						</div>
+						<div class="glass-panel clickable" data-link="https://github.com/USSiamaboat/polytuplet-loss">
+							Code
+						</div>
+					</div>
+				</div>
+
+				<div class="publication">
+					<p class="meta">Academic Paper   —   2022 <wbr>(Published&nbsp;2023)</p>
+					<p class="title">The Impact of Socioeconomic Factors on Health Disparities</p>
+					<p class="authors">Krish Khanna, Jeffrey Lu, Jay Warrier</p>
+					<div class="buttons">
+						<div class="glass-panel clickable" data-link="https://arxiv.org/abs/2212.04285">
+							Read
+						</div>
+					</div>
+				</div>
+
+				<div class="publication">
+					<p class="meta">Academic Paper   —   2021 <wbr>(Published&nbsp;2023)</p>
+					<p class="title">Computational Validation of a Mathematical Model of Stable Multi-Species Communities in a Hawk Dove Game</p>
+					<p class="authors">Jeffrey Lu</p>
+					<div class="buttons">
+						<div class="glass-panel clickable" data-link="https://arxiv.org/abs/2304.00687">
+							Read
+						</div>
+						<div class="glass-panel clickable" data-link="https://github.com/USSiamaboat/hawkdove">
+							Code
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<footer class="glass-panel">
+			<div class="icons">
+				<div class="icon-container" data-link="https://www.linkedin.com/in/jeffrey-p-lu/"><img src="Images/Linkedin.png"></div>
+				<div class="icon-container" data-link="https://github.com/USSiamaboat"><img src="Images/Github.png"></div>
+				<div class="icon-container" data-action="message"><img src="Images/Mail.png"></div>
+			</div>
+			<p>© Jeffrey Lu 2023. All Rights Reserved.</p>
+		</footer>
 	</div>
-	<footer>
-		<div class="spacer"></div>
-		<a href="https://github.com/USSiamaboat"><img src="/Images/Github Logo.png" alt="Snapchat"></a>
-		<div class="nope"><img src="/Images/Discord Logo.png" alt="Discord"></div>
-		<div class="nope"><img src="/Images/Linkedin Logo.png" alt="Linkedin"></div>
-		<div class="spacer"></div>
-		<div class="message"><p>Made from scratch</p><a href="https://github.com/JeffreyPLu/jeffreyplu.github.io" target="_blank" class="underline">View source</a></div>
-		<p class="copy">Copyright &copy; 2023 Jeffrey Lu </p>
-	</footer>
+
 </body>
 </html>
