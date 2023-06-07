@@ -174,13 +174,13 @@ dialog .text-input textarea {
 	font-size: 1.4rem;
 }
 
-dialog .text-input .buttons {
+dialog .buttons {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 2rem;
 }
 
-dialog .text-input .buttons .clickable {
+dialog .buttons .clickable {
 	padding: 1rem;
 	color: white;
 	font-weight: bold;
@@ -191,16 +191,16 @@ dialog .text-input .buttons .clickable {
 	transition: filter 0.2s linear;
 }
 
-dialog .text-input .buttons .clickable:nth-child(1) {
+dialog .buttons .clickable:nth-child(1) {
 	background-color: rgb(255, 78, 78);
 }
 
-dialog .text-input .buttons .clickable:nth-child(2) {
+dialog .buttons .clickable:nth-child(2) {
 	background-color: rgb(78, 138, 255);
 }
 
 @media (hover:hover) and (pointer:fine) {
-	dialog .text-input .buttons .clickable:hover {
+	dialog .buttons .clickable:hover {
 		filter: brightness(0.9);
 	}
 }
