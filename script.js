@@ -24,6 +24,101 @@ function closeMobileMenu(e) {
 
 document.addEventListener("click", closeMobileMenu)
 
+// Form character counter
+
+const textFields = Array.from(document.getElementsByClassName("text-input"))
+
+textFields.forEach(textField => {
+	const input = textField.getElementsByTagName("textarea")[0]
+	const counter = textField.getElementsByClassName("char-limit")[0]
+	const charLimit = counter.getAttribute("data-limit")
+
+	input.addEventListener("input", e => {
+		counter.innerText = `${input.value.length}/${charLimit}`
+	})
+})
+
+// Form
+
+const modal = document.getElementsByTagName("dialog")[0]
+const buttons = Array.from(modal.getElementsByClassName("clickable"))
+const emailField = document.getElementById("email")
+const messageField = document.getElementById("message")
+const errorEl = document.getElementById("form-error")
+
+function openModal() {
+	modal.showModal()
+}
+
+function closeModal() {
+	modal.close()
+}
+
+buttons[0].addEventListener("click", closeModal)
+
+buttons[1].addEventListener("click", e => {
+	const approved = submitMessage(emailField.value, messageField.value)
+	
+	if (approved == "😀") {
+		closeModal()
+		return
+	}
+
+	errorEl.innerText = approved
+	errorEl.classList.add("shown")
+})
+
+// Send Form Data
+
+const url = "https://send.pageclip.co/7A5E2mxhjVipBMIYPlmA2RmtGkLWEGvZ/webportfolio"
+const oneDay = 1000*60*60*24
+
+function post(url, data) {
+	let xhr
+
+	if (window.XMLHttpRequest) {
+		xhr = new XMLHttpRequest()
+	} else if (window.ActiveXObject) {
+		xhr = new ActiveXObject("Microsoft.XMLHTTP")
+	}
+
+	xhr.open("POST", url, true)
+	xhr.setRequestHeader("Content-Type", "application/json")
+	xhr.setRequestHeader("Accept", "application/json")
+	xhr.send(JSON.stringify(data))
+
+	localStorage.setItem("lastsubmitted", new Date().toString())
+}
+
+function validateEmail(email) {
+	return String(email)
+		.toLowerCase()
+		.match(
+			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+		)
+}
+
+function isValid(email, message) {
+	return (email.length <= 50)
+		&& (message.length <= 500)
+		&& (message.length > 0)
+		&& validateEmail(email)
+}
+
+function submitMessage(email, message) {
+	const lastSubmitted = new Date(localStorage.getItem("lastsubmitted"))
+
+	const isOutsideOneDay = (lastSubmitted == null) || (new Date() - lastSubmitted > oneDay)
+	const isValidMessage = isValid(email, message)
+
+	if (!isOutsideOneDay) return "Sending Failed: Only 1 message allowed per day"
+	if (!isValidMessage) return "Sending Failed: Invalid email/message"
+
+	post(url, {"email": email, "message": message})
+	errorEl.classList.remove("shown")
+	return "😀"
+}
+
 // Smooth Scrolling
 
 const body = document.body;

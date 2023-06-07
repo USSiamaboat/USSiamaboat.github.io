@@ -141,6 +141,18 @@ dialog .title {
 	font-weight: bold;
 }
 
+dialog #form-error {
+	font-size: 1.6rem;
+	font-weight: bold;
+	color: rgb(255, 78, 78);
+	text-align: center;
+	display: none;
+}
+
+dialog #form-error.shown {
+	display: block;
+}
+
 dialog .text-input {
 	display: grid;
 	grid-template-columns: auto max-content;
