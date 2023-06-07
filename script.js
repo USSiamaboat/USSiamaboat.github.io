@@ -119,6 +119,16 @@ function submitMessage(email, message) {
 	return "😀"
 }
 
+// Link message modal to mail buttons
+
+const mails = Array.from(document.querySelectorAll("[data-action='message']"))
+
+console.log(mails)
+
+mails.forEach(mail => {
+	mail.addEventListener("click", openModal)
+})
+
 // Smooth Scrolling
 
 const body = document.body;
