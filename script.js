@@ -215,12 +215,11 @@ links.forEach(link => {
 
 const heroDesc = document.getElementById("hero-desc")
 const descs = [
-	"Full-Stack Web Developer",
+	"Web Developer",
 	"AI Researcher",
 	"Award-Winning Pianist",
 	"Competitive Programmer",
-	"High School Student",
-	"Entrepreneur"
+	"Entrepreneur",
 ]
 const fadeDuration = 100
 
