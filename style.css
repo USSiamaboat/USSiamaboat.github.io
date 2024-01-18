@@ -616,7 +616,7 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 
 #works {
 	display: grid;
-	gap: 4rem;
+	gap: 5rem;
 	margin-bottom: 15rem;
 }
 

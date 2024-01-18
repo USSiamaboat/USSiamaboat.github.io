@@ -198,10 +198,10 @@ if (!mobile) {
 const links = Array.from(document.querySelectorAll("[data-link]"))
 
 function goToURL(url) {
-	if (mobile && (url.substring(0, 1) == "#")) {
-		document.getElementById(url.substring(1)).scrollIntoView()
-	} else {
+	if (url[0] != "#") {
 		window.open(url, "_blank")
+	} else if (mobile) {
+		document.getElementById(url.substring(1)).scrollIntoView()
 	}
 }
 
@@ -215,12 +215,12 @@ links.forEach(link => {
 
 const heroDesc = document.getElementById("hero-desc")
 const descs = [
-	"Full-Stack Web Developer     ",
-	"AI Researcher     ",
-	"Award-Winning Pianist     ",
-	"Competitive Programmer     ",
-	"High School Student     ",
-	"Entrepreneur     "
+	"Full-Stack Web Developer",
+	"AI Researcher",
+	"Award-Winning Pianist",
+	"Competitive Programmer",
+	"High School Student",
+	"Entrepreneur"
 ]
 const fadeDuration = 100
 
@@ -248,7 +248,7 @@ const timing = {
 }
 
 function stepIndices() {
-	const currentDesc = descs[currentDescIndex]
+	const currentDesc = descs[currentDescIndex] + "     "
 	
 	if (isAdding) {
 		currentLetterIndex++
@@ -278,7 +278,7 @@ function updateHeroDesc() {
 	if (isAdding) {
 		const newLetterElement = document.createElement("p")
 
-		const currentDesc = descs[currentDescIndex]
+		const currentDesc = descs[currentDescIndex] + "     "
 		const newLetter = currentDesc.substring(currentLetterIndex, currentLetterIndex+1)
 
 		if (currentLetterIndex == 0) {
