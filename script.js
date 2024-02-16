@@ -217,9 +217,9 @@ const heroDesc = document.getElementById("hero-desc")
 const descs = [
 	"Web Developer",
 	"AI Researcher",
+	"Entrepreneur",
 	"Award-Winning Pianist",
 	"Competitive Programmer",
-	"Entrepreneur",
 ]
 const fadeDuration = 100
 
