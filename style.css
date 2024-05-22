@@ -629,6 +629,10 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 	text-align: center;
 }
 
+.work.twocol {
+	grid-template-columns: min-content auto;
+}
+
 .work .col1 {
 	display: grid;
 	gap: 2rem;
@@ -684,6 +688,13 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 		"open source";
 }
 
+.work.twocol .col2 {
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas:
+		"preview preview preview"
+		"b1 b2 b3";
+}
+
 .work .col2 .preview {
 	display: grid;
 	align-items: center;
@@ -692,6 +703,8 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 
 .work .col2 .preview img {
 	width: 100%;
+	max-width: 45rem;
+	margin: auto;
 	aspect-ratio: initial;
 }
 
@@ -699,6 +712,8 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 	font-size: 2rem;
 	font-weight: bold;
 	padding: .75rem 1rem;
+	display: grid;
+	align-items: center;
 }
 
 .work .col3 {
@@ -728,6 +743,11 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 		grid-template-rows: repeat(3, min-content);
 	}
 
+	.work.twocol {
+		grid-template-columns: auto;
+		grid-template-rows: repeat(2, min-content);
+	}
+
 	.work .col2 .preview {
 		justify-items: center;
 	}
@@ -737,15 +757,7 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 	}
 
 	.work .col3 {
-		display: grid;
-		grid-auto-flow: row;
-		justify-content: center;
-		grid-template-columns: repeat(auto-fill, 7.5rem);
-		grid-template-rows: unset;
-	}
-
-	.work .col3.limit-3 {
-		grid-template-columns: repeat(3, 7.5rem);
+		display: none;
 	}
 
 	.work .col3 img {
