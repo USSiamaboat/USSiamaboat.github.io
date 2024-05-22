@@ -215,8 +215,9 @@ links.forEach(link => {
 
 const heroDesc = document.getElementById("hero-desc")
 const descs = [
-	"Web Developer",
 	"AI Researcher",
+	"Data Scientist",
+	"Web Developer",
 	"Entrepreneur",
 	"Award-Winning Pianist",
 	"Competitive Programmer",

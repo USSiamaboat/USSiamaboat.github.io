@@ -515,6 +515,7 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: min-content min-content;
 	align-content: center;
+	padding-bottom: 5rem;
 	row-gap: 1rem;
 	column-gap: 4rem;
 }
@@ -557,6 +558,7 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 
 	#about .container .right {
 		grid-area: numbers;
+		padding-bottom: 0;
 	}
 }
 
