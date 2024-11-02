@@ -495,6 +495,15 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 	font-size: 2rem;
 }
 
+#about .container .left p a {
+	color: rgb(112, 0, 255);
+	transition: filter 0.2s linear;
+}
+
+#about .container .left p a:hover {
+	filter: brightness(0.5);
+}
+
 #about .container .left p:nth-child(1) {
 	grid-area: a;
 }
