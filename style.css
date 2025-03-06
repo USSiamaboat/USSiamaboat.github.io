@@ -577,7 +577,7 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 	--icon-size: 8.5rem;
 	display: grid;
 	gap: 2rem;
-	margin-bottom: 15rem;
+	margin-bottom: 10rem;
 }
 
 #skills .container {
@@ -859,7 +859,7 @@ nav .main-bar a:not(a:nth-child(1)).active::before {
 #publications {
 	display: grid;
 	gap: 4rem;
-	margin-bottom: 10rem;
+	margin-bottom: 15rem;
 }
 
 .publication {
