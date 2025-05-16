@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime spiral test</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        #spiral {
+            width: 100%;
+        }
+
+        circle {
+            cursor: pointer;
+            pointer-events: stroke;
+            r: 4px;
+            fill: #B3B3CC;
+            stroke: #FF000000;
+            stroke-width: 25px;
+            transition: r 0.2s ease-in-out, fill 0.2s ease-in-out;
+        }
+
+        circle:hover {
+            fill: #3333CC !important;
+            r: 8px;
+        }
+
+        #tooltip {
+            display: block;
+            position: absolute;
+            color: #3333CC;
+            font-weight: bold;
+            text-shadow: 0 0 10px white;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <svg id="spiral" viewBox="-1000 -1000 2000 2000" preserveAspectRatio="xMidYMid meet"></svg>
+
+    <p id="tooltip" style="display: none;">0</p>
+
+    <script src="primes.js"></script>
+</body>
+</html>
