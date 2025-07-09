@@ -281,6 +281,23 @@ async function angryForm(message = "Form couldn't send!") {
     formElt.classList.remove("angry")
     restoreValue(emailElt)
     restoreValue(messageElt)
+
+    allowSubmit = true
+}
+
+function validate(data) {
+    // Check email
+    const emailRe = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const emailGood = data["email"].toLowerCase().match(emailRe)
+
+    if (!emailGood) {
+        angryForm("Invalid email")
+        return false
+    }
+    
+    // TODO: maybe add more validation if it becomes a problem
+
+    return true
 }
 
 async function sendForm(data) {
@@ -291,7 +308,7 @@ async function sendForm(data) {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            "body": data
+            "body": JSON.stringify(data)
         })
 
         if (response.ok) {
@@ -312,8 +329,6 @@ async function sendForm(data) {
     } catch (error) {
         await angryForm()
     }
-
-    allowSubmit = true
 }
 
 submitElt.addEventListener("click", () => {
@@ -322,10 +337,14 @@ submitElt.addEventListener("click", () => {
 
     allowSubmit = false
 
-    sendForm(JSON.stringify({
+    let data = {
         "email": emailElt.value,
         "message": messageElt.value
-    }))
+    }
+
+    if (!validate(data)) { return }
+
+    sendForm(data)
 })
 
 // Run all
