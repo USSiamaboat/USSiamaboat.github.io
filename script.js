@@ -1,324 +1,355 @@
-// Detect Mobile
+// Title glitch animator
+// ==================== //
+// TODO: change from somewhat questionable setTimeout sequences to requestAnimationFrame
 
-let mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+// Setup
+const titleElt = document.getElementById("title")
 
-// Mobile Menu
+const BLANK = "⠀"
+const GLITCHES = "!@#$%^&[](){}"
+const TITLES = [
+    "Data Scientist",
+    "ML Researcher",
+    "Quantitative Trader",
+    "Award-Winning Pianist",
+    "Web Developer"
+]
+const MAX_TITLE_LEN = TITLES.reduce((acc, curr) => Math.max(acc, curr.length), 0)
+const GLITCH_DELAY = 30
+const LINGER_TIME = 1000
 
-const mobileMenuToggle = document.getElementById("mobile-menu-toggle")
-let isMobileMenuOpen = false
+// Main
+function runTitleGlitch() {
+    let curr = 1
+    titleElt.innerText = TITLES[0]
 
-function toggleMobileMenu(e) {
-	if (e.currentTarget.id == "mobile-menu-toggle") {
-		e.stopPropagation()
-	}
+    function helper() {
+        curr = (curr + 1) % TITLES.length
 
-	mobileMenuToggle.classList.toggle("active")
-	isMobileMenuOpen = !isMobileMenuOpen
+        setTimeout(() => { glitchTo(TITLES[curr], helper) }, LINGER_TIME)
+    }
 
-	if (!isMobileMenuOpen) return
+    setTimeout(() => { glitchTo(TITLES[curr], helper) }, LINGER_TIME)
 }
 
-mobileMenuToggle.addEventListener("click", toggleMobileMenu)
-
-function closeMobileMenu(e) {
-	mobileMenuToggle.classList.remove("active")
+// Randomizer
+function randomGlitch() {
+    return GLITCHES[Math.floor(Math.random() * GLITCHES.length)]
 }
 
-document.addEventListener("click", closeMobileMenu)
+// Animation sequence
+function glitchTo(target, callback) {
+    const source = titleElt.innerText
 
-// Form character counter
+    // Add blanks if needed
+    titleElt.innerText += BLANK.repeat(Math.max(0, target.length - source.length))
 
-const textFields = Array.from(document.getElementsByClassName("text-input"))
+    // Helpers
+    function glitchHelper(i, l) {
+        let newText = ""
 
-textFields.forEach(textField => {
-	const input = textField.getElementsByTagName("textarea")[0]
-	const counter = textField.getElementsByClassName("char-limit")[0]
-	const charLimit = counter.getAttribute("data-limit")
+        for (let j = 0; j < i; j++) {
+            newText += randomGlitch()
+        }
 
-	input.addEventListener("input", e => {
-		counter.innerText = `${input.value.length}/${charLimit}`
-	})
-})
+        newText += titleElt.innerText.slice(i, l)
+
+        titleElt.innerText = newText
+    }
+
+    function unglitchHelper(i) {
+        let newText = target.slice(0, i)
+
+        for (let j = i; j < target.length; j++) {
+            newText += randomGlitch()
+        }
+
+        titleElt.innerText = newText
+    }
+    
+    // Glitch all
+    let lastDelay = 0
+    for (let i = 1; i <= titleElt.innerText.length; i++) {
+        lastDelay += GLITCH_DELAY
+        setTimeout(() => { glitchHelper(i, titleElt.innerText.length) }, lastDelay)
+    }
+
+    // Remove excess length
+    for (let i = source.length; i >= target.length; i--) {
+        lastDelay += GLITCH_DELAY
+        setTimeout(() => { glitchHelper(i, i) }, lastDelay)
+    }
+
+    // Unglitch all
+    for (let i = 1; i <= target.length; i++) {
+        lastDelay += GLITCH_DELAY
+        setTimeout(() => { unglitchHelper(i) }, lastDelay)
+    }
+
+    // Callback
+    lastDelay += GLITCH_DELAY
+    setTimeout(callback, lastDelay)
+}
+
+
+// Prime spiral
+// ==================== //
+
+// Elements
+const svg = document.getElementById("spiral")
+const tooltip = document.getElementById("tooltip")
+
+// Colors
+const COLOR1 = "#B3B3CC"
+const COLOR2 = "#3333CC"
+
+// Residue config
+const MOD = 22
+const HIGHLIGHT_PROP_DELAY = 10
+const HIGHLIGHT_TRANSITION = 200
+const HIGHLIGHT_FADE_DELAY = 100
+
+// SVG config
+const MAX_PRIME = 9000 // Largest prime that will be visible
+const SVG_VIEWBOX_WIDTH = document.body.getBoundingClientRect().width
+const SVG_VIEWBOX_HEIGHT = Math.round(SVG_VIEWBOX_WIDTH / 1.7)
+const POLAR_SCALE = 0.15 * SVG_VIEWBOX_WIDTH / 1000
+
+// Main
+function runPrimeSpiral() {
+    svg.setAttribute("viewBox", `-${SVG_VIEWBOX_WIDTH} -${SVG_VIEWBOX_HEIGHT} ${2*SVG_VIEWBOX_WIDTH} ${2*SVG_VIEWBOX_HEIGHT}`)
+    draw()
+
+    const circles = document.getElementsByTagName("circle")
+    Array.from(circles).forEach(x => {
+        x.addEventListener("mouseenter", tooltipCallback)
+        x.addEventListener("mouseleave", hideTooltip)
+    })
+
+    animateResidues()
+}
+
+// Residue classes
+function animateResidues() {
+    const circles = document.getElementsByTagName("circle") // Guaranteed to be in sorted order
+    const classes = findResidueClasses(circles).filter(x => x.length)
+
+    const totalDuration = circles.length * 2 * HIGHLIGHT_PROP_DELAY + classes.length * HIGHLIGHT_FADE_DELAY
+
+    let delay = 0
+
+    for (let classNum = 0; classNum < classes.length; classNum++) {
+        const classDelay = classes[classNum].length * (HIGHLIGHT_PROP_DELAY)
+
+        for (let i = 0; i < classes[classNum].length; i++) {
+            const keyframes = [
+                { "fill": COLOR1, "offset": 0 },
+                { "fill": COLOR2, "offset": HIGHLIGHT_TRANSITION / totalDuration, "easing": "ease-in-out" },
+                { "fill": COLOR2, "offset": (classDelay + HIGHLIGHT_TRANSITION) / totalDuration },
+                { "fill": COLOR1, "offset": (classDelay + 2 * HIGHLIGHT_TRANSITION) / totalDuration, "easing": "ease-in-out" },
+                { "fill": COLOR1, "offset": 1 }
+            ]
+
+            classes[classNum][i].animate(
+                keyframes, {
+                    "duration": totalDuration,
+                    "delay": delay,
+                    "iterations": Infinity
+                }
+            )
+
+            delay += HIGHLIGHT_PROP_DELAY
+        }
+
+        delay += HIGHLIGHT_FADE_DELAY + classDelay
+    }
+}
+
+function findResidueClasses(circles) {
+    let classes = Array(MOD).fill().map(() => [])
+
+    for (const circle of circles) {
+        const prime = parseInt(circle.id)
+
+        classes[prime % MOD].push(circle)
+    }
+
+    return classes
+}
+
+// Tooltip
+function hideTooltip() {
+    tooltip.setAttribute("style", "display: none;")
+}
+
+function tooltipCallback(e) {
+    const rect = e.target.getBoundingClientRect()
+    const bodyRect = document.body.getBoundingClientRect()
+
+    const xStr = (rect.x < bodyRect.width/2) ? `left: ${(rect.x + 5)}px;` : `right: ${bodyRect.width - rect.x + 5}px;`
+    const yStr = (rect.y < 50) ? `top: ${(rect.y + window.scrollY + 15)}px;` : `top: ${rect.y + window.scrollY - 20}px;`
+
+    tooltip.innerText = e.target.getAttribute("id")
+    tooltip.setAttribute("style", xStr + yStr)
+}
+
+// Generate SVG
+function draw() {
+    // Must be added in sorted order
+
+    primes = sieveOfEratosthenes(MAX_PRIME)
+
+    let svgContent = ""
+
+    for (const prime of primes) {
+        svgContent += drawPoint(prime)
+    }
+
+    svg.innerHTML = svgContent
+}
+
+function drawPoint(p) {
+    x = POLAR_SCALE * p * Math.cos(p)
+    y = - POLAR_SCALE * p * Math.sin(p) // Negative to fix svg's inverted y axis
+
+    if (Math.abs(x) > SVG_VIEWBOX_WIDTH || Math.abs(y) > SVG_VIEWBOX_HEIGHT) { return "" } // Don't draw out of bounds
+
+    return `<circle id="${p}" cx="${x}" cy="${y}" style="animation-delay: ${(p%30)/10}s;"/>`
+}
+
+// Generate primes
+function sieveOfEratosthenes(n) {
+    let primes = new Uint8Array(n + 1).fill(1)
+
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (primes[i]) {
+            for (let j = i * i; j <= n; j += i) {
+                primes[j] = 0
+            }
+        }
+    }
+
+    let result = []
+    for (let i = 2; i <= n; i++) {
+        if (primes[i]) { result.push(i) }
+    }
+
+    return result
+}
+
 
 // Form
+// ==================== //
+const formElt = document.getElementById("form")
+const emailElt = document.getElementById("email")
+const messageElt = document.getElementById("message")
+const submitElt = document.getElementById("submit")
 
-const modal = document.getElementsByTagName("dialog")[0]
-const buttons = Array.from(modal.getElementsByClassName("clickable"))
-const emailField = document.getElementById("email")
-const messageField = document.getElementById("message")
-const errorEl = document.getElementById("form-error")
+let allowSubmit = true
 
-function openModal() {
-	modal.showModal()
+let angryExpiration = new Date()
+const ANGRY_LEN = 2000
+
+const FORM_URL = "https://formspree.io/f/mldnywrv"
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-function closeModal() {
-	modal.close()
+function storeValue(elt, newValue) {
+    elt.setAttribute("storedValue", elt.value)
+    elt.value = newValue
+    elt.setAttribute("disabled", true)
 }
 
-buttons[0].addEventListener("click", closeModal)
+function restoreValue(elt) {
+    elt.value = elt.getAttribute("storedValue")
+    elt.removeAttribute("storedValue")
+    elt.removeAttribute("disabled")
+}
 
-buttons[1].addEventListener("click", e => {
-	const approved = submitMessage(emailField.value, messageField.value)
-	
-	if (approved == "😀") {
-		closeModal()
-		return
-	}
+async function angryForm(message = "Form couldn't send!") {
+    if (new Date() < angryExpiration) { return }
 
-	errorEl.innerText = approved
-	errorEl.classList.add("shown")
+    angryExpiration = new Date() + ANGRY_LEN
+    formElt.classList.add("angry")
+    storeValue(emailElt, "Error!")
+    storeValue(messageElt, message)
+    
+    await delay(ANGRY_LEN)
+
+    formElt.classList.remove("angry")
+    restoreValue(emailElt)
+    restoreValue(messageElt)
+
+    allowSubmit = true
+}
+
+function validate(data) {
+    // Check email
+    const emailRe = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const emailGood = data["email"].toLowerCase().match(emailRe)
+
+    if (!emailGood) {
+        angryForm("Invalid email")
+        return false
+    }
+    
+    // TODO: maybe add more validation if it becomes a problem
+
+    return true
+}
+
+async function sendForm(data) {
+    try {
+        const response = await fetch(FORM_URL, {
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            "body": JSON.stringify(data)
+        })
+
+        if (response.ok) {
+            emailElt.value = "Success."
+            messageElt.value = "I have been notified!"
+
+            emailElt.setAttribute("disabled", true)
+            messageElt.setAttribute("disabled", true)
+            submitElt.setAttribute("disabled", true)
+        } else {
+            const responseData = await response.json();
+            if (responseData.hasOwnProperty('errors')) {
+                await angryForm(responseData.errors.map(error => error.message).join(", "))
+            } else {
+                await angryForm()
+            }
+        }
+    } catch (error) {
+        await angryForm()
+    }
+}
+
+submitElt.addEventListener("click", () => {
+    if (new Date() < angryExpiration) { return }
+    else if (!allowSubmit) { return }
+
+    allowSubmit = false
+
+    let data = {
+        "email": emailElt.value,
+        "message": messageElt.value
+    }
+
+    if (!validate(data)) { return }
+
+    sendForm(data)
 })
 
-// Send Form Data
-
-const url = "https://send.pageclip.co/7A5E2mxhjVipBMIYPlmA2RmtGkLWEGvZ/webportfolio"
-const oneDay = 1000*60*60*24
-
-function post(url, data) {
-	let xhr
-
-	if (window.XMLHttpRequest) {
-		xhr = new XMLHttpRequest()
-	} else if (window.ActiveXObject) {
-		xhr = new ActiveXObject("Microsoft.XMLHTTP")
-	}
-
-	xhr.open("POST", url, true)
-	xhr.setRequestHeader("Content-Type", "application/json")
-	xhr.setRequestHeader("Accept", "application/json")
-	xhr.send(JSON.stringify(data))
-
-	localStorage.setItem("lastsubmitted", new Date().toString())
-}
-
-function validateEmail(email) {
-	return String(email)
-		.toLowerCase()
-		.match(
-			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-		)
-}
-
-function isValid(email, message) {
-	return (email.length <= 50)
-		&& (message.length <= 500)
-		&& (message.length > 0)
-		&& validateEmail(email)
-}
-
-function submitMessage(email, message) {
-	const lastSubmitted = new Date(localStorage.getItem("lastsubmitted"))
-
-	const isOutsideOneDay = (lastSubmitted == null) || (new Date() - lastSubmitted > oneDay)
-	const isValidMessage = isValid(email, message)
-
-	if (!isOutsideOneDay) return "Sending Failed: Only 1 message allowed per day"
-	if (!isValidMessage) return "Sending Failed: Invalid email/message"
-
-	post(url, {"email": email, "message": message})
-	errorEl.classList.remove("shown")
-	return "😀"
-}
-
-// Link message modal to mail buttons
-
-const mails = Array.from(document.querySelectorAll("[data-action='message']"))
-
-mails.forEach(mail => {
-	mail.addEventListener("click", openModal)
+// Run all
+// ==================== //
+window.addEventListener('load', () => {
+  runTitleGlitch()
+  runPrimeSpiral()
 })
-
-// Smooth Scrolling
-
-const body = document.body
-const main = document.getElementById("scroll-container")
-
-let targetY = 0
-let currY = targetY
-
-function updateTarget() {
-	targetY = window.pageYOffset
-}
-
-function lin_interp(a, b, t) {
-	// Linear interpolation between a and b at time t in [0, 1]
-	return (1 - t) * a + t * b
-}
-
-function update() {
-	// Reduces the distance to the target by approximated exponential decay
-	body.style.height = `${main.clientHeight}px`
-
-	currY = lin_interp(currY, targetY, 0.1)
-	currY = Math.floor(currY * 100) / 100
-
-	main.style.transform = `translateY(-${currY}px)`
-
-  	window.requestAnimationFrame(update)
-}
-
-function removeScrollElements() {
-	body.append(...main.children)
-	main.remove()
-}
-
-if (!mobile) {
-	window.addEventListener("scroll", updateTarget)
-	window.requestAnimationFrame(update)
-} else {
-	removeScrollElements()
-}
-
-// Desktop Scrollto
-
-const scrollTos = Array.from(document.querySelectorAll("[data-scrollto]"))
-
-function getTargetY(el) {
-	return el.getClientRects()[0]["y"] - 85 + currY
-}
-
-if (!mobile) {
-	scrollTos.forEach(el => {
-		el.addEventListener("click", e => {
-			const destinationID = e.target.getAttribute("data-scrollto")
-			const destination = document.getElementById(destinationID)
-			targetY = getTargetY(destination)
-			window.scrollTo({
-				top: targetY,
-				left: 0,
-				behavior: "instant"
-			})
-		})
-	})
-}
-
-// Links
-
-const links = Array.from(document.querySelectorAll("[data-link]"))
-
-function goToURL(url) {
-	if (url[0] != "#") {
-		window.open(url, "_blank")
-	} else if (mobile) {
-		document.getElementById(url.substring(1)).scrollIntoView()
-	}
-}
-
-links.forEach(link => {
-	link.addEventListener("click", e => {
-		goToURL(link.getAttribute("data-link"))
-	})
-})
-
-// Hero Description
-
-const heroDesc = document.getElementById("hero-desc")
-const descs = [
-	"Data Scientist",
-	"AI Researcher",
-	"Award-Winning Pianist",
-	"Web Developer",
-	"Entrepreneur",
-]
-const fadeDuration = 100
-
-let isAdding = true
-let currentDescIndex = 0
-let currentLetterIndex = 0
-let currentWord = null
-let newWord = true
-let deleteStack = []
-
-const fadeIn = [
-	{ opacity: 0, transform: "translateX(30%)" },
-	{ opacity: 1, transform: "translateX(0%)" },
-]
-
-const fadeOut = [
-	{ opacity: 1, transform: "translateX(0%)" },
-	{ opacity: 0, transform: "translateX(50%)" },
-]
-
-const timing = {
-	duration: fadeDuration,
-	iterations: 1,
-	easing: "ease-in-out",
-}
-
-function stepIndices() {
-	const currentDesc = descs[currentDescIndex] + "     "
-	
-	if (isAdding) {
-		currentLetterIndex++
-	} else {
-		currentLetterIndex--
-	}
-
-	if (currentLetterIndex == currentDesc.length) {
-		isAdding = false
-		currentLetterIndex--
-	} else if (currentLetterIndex == -1) {
-		isAdding = true
-		currentLetterIndex++
-		currentDescIndex++
-		currentDescIndex = currentDescIndex % descs.length
-	}
-}
-
-function updateHeroDesc() {
-	if (newWord) {
-		currentWord = document.createElement("div")
-		currentWord.classList.add("word")
-		heroDesc.append(currentWord)
-		newWord = false
-	}
-
-	if (isAdding) {
-		const newLetterElement = document.createElement("p")
-
-		const currentDesc = descs[currentDescIndex] + "     "
-		const newLetter = currentDesc.substring(currentLetterIndex, currentLetterIndex+1)
-
-		if (currentLetterIndex == 0) {
-			deleteStack = []
-			Array.from(heroDesc.children).forEach(child => {
-				child.remove()
-			})
-
-			currentWord = document.createElement("div")
-			currentWord.classList.add("word")
-			heroDesc.append(currentWord)
-		}
-
-		if (newLetter == " ") {			
-			currentWord = document.createElement("div")
-			currentWord.classList.add("word")
-			heroDesc.append(currentWord)
-
-			deleteStack.push(currentWord)
-		} else {
-			newLetterElement.innerText = newLetter
-		}
-
-		currentWord.append(newLetterElement)
-
-		deleteStack.push(newLetterElement)
-
-		newLetterElement.animate(fadeIn, timing)
-
-		stepIndices()
-	} else {
-		const currentLetterElement = deleteStack[currentLetterIndex]
-
-		currentLetterElement.animate(fadeOut, timing)
-
-		setTimeout(() => {
-			currentLetterElement.remove()
-		}, fadeDuration)
-
-		stepIndices()
-	}
-}
-
-setInterval(updateHeroDesc, 100)

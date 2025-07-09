@@ -1,389 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!-- Open graph meta -->
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+
+    <base target="_blank"> 
+
+	<!-- Regular Meta -->
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="/Images/Favicon.png">
+	<title>Jeffrey Lu</title>
+	<meta name="description" content="I do computer things">
+
+    <!-- Open graph meta -->
 	<meta property="og:title" content="Jeffrey Lu"/>
 	<meta property="og:site_name" content="Jeffrey Lu">
 
-	<meta property="og:description" content="Student, Developer, Researcher"/>
+	<meta property="og:description" content="I do computer things"/>
 	<meta property="og:url" content="https://jeffreylu.me"/>
 
 	<meta property="og:image" content="/Images/blank1px.png"/>
 	<meta property="og:type" content="website"/>
 
-	<!-- Regular Meta -->
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<link rel="shortcut icon" href="/Images/Favicon.png">
-	<title>Jeffrey Lu</title>
-	<meta name="description" content="Student, Developer, Researcher">
-
 	<!-- CSS and JS -->
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="styles.css">
 	<script defer src="script.js"></script>
 
-	<!-- Fonts -->
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="inter.css" rel="stylesheet" defer>
+    <!-- Font loading -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/ibmplexsans/v22/zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYbSB4Zh.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="fonts.css">
 </head>
 <body>
+    <svg width="0" height="0" style="position: fixed; overflow: hidden;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <clipPath id="hexagon" clipPathUnits="objectBoundingBox">
+                <path d="M.9912.4719.7669.0282C.7582.0108.7419 0 .7243 0H.2757C.2581 0 .2418.0108.233.0282L.0088.4719C0 .4892 0 .5108.0088.5281L.233.9719C.2418.9892.2581 1 .2757 1H.7243C.7419 1 .7582.9892.7669.9719L.9912.5281C1 .5108 1 .4892.9912.4719Z" />
+            </clipPath>
+        </defs>
+    </svg>
 
-	<dialog class="glass-panel">
-		<p class="title">Send a Message</p>
+    <nav>
+        <a target="_self" href="#about">About</a>
+        <a target="_self" href="#projects">Projects</a>
+        <a target="_self" href="#publications">Publications</a>
+        <a target="_self" href="#footer">Contact</a>
+    </nav>
 
-		<div class="text-input">
-			<p class="label">Email</p>
-			<p class="char-limit" data-limit="64">0/64</p>
-			<textarea class="glass-panel" id="email" rows="1" maxlength="64" placeholder="name@website.com" data-enable-grammarly="false"></textarea>
-		</div>
+    <div id="hero">
+        <svg id="spiral" viewBox="-1000 -1000 2000 2000" preserveAspectRatio="xMidYMid meet"></svg>
 
-		<div class="text-input">
-			<p class="label">Message</p>
-			<p class="char-limit" data-limit="512">0/512</p>
-			<textarea class="glass-panel" id="message" rows="10" maxlength="512" placeholder="Tell me something interesting"></textarea>
-		</div>
+        <div id="intro">
+            <p id="name">I'm <strong>Jeffrey</strong>,</p>
+            <p id="title">Loading...</p>
+        </div>
 
-		<p id="form-error">Sending Failed: idk why 💀. Try again?</p>
+        <p id="tooltip" style="display: none;">0</p>
 
-		<div class="buttons">
-			<div class="clickable">Cancel</div>
-			<div class="clickable">Send</div>
-		</div>
-	</dialog>
+        <p id="spiral-desc">
+            Plot of (r, θ) = (p, p) for prime p with residue classes modulo 44 highlighted. <a href="https://www.3blue1brown.com/lessons/prime-spirals">Learn More</a>
+        </p>
+    </div>
 
-	<nav>
-		<div class="main-bar glass-panel">
-			<a href="#hero" data-scrollto="hero">Jeffrey Lu</a>
+    <section id="about">
+        <p class="title">About</p>
 
-			<a href="#about" data-scrollto="about">About</a>
-			<a href="#works" data-scrollto="works">Projects</a>
-			<a href="#publications" data-scrollto="publications">Publications</a>
-			<a href="#skills" data-scrollto="skills">Skills</a>
-		</div>
+        <p>
+            I study Data Science @ UMich Honors.<br>
+            I’m currently researching for <a href="https://www.lsi.umich.edu/science/our-labs/cianfrocco-lab">UMich LSI</a>,<br>
+            privately contracting as a data scientist,<br>
+            building an algo trading project for <a href="https://mdst.club/">MDST</a>,<br>
+            and writing for the <a href="https://www.michigandaily.com/">Michigan Daily</a>
+        </p>
 
-		<div class="glass-panel clickable" data-link="https://www.linkedin.com/in/jeffrey-p-lu/">
-			<div class="icon-container">
-				<img src="Images/Linkedin.png">
-			</div>
-		</div>
+        <div id="years">
+            <div class="year">
+                <p>4+</p>
+                <p>Years of<br>Data Science</p>
+            </div>
 
-		<div class="glass-panel clickable" data-link="https://github.com/USSiamaboat">
-			<div class="icon-container">
-				<img src="Images/Github.png">
-			</div>
-		</div>
+            <div class="year">
+                <p>5+</p>
+                <p>Years of<br>Web Dev</p>
+            </div>
+        </div>
+    </section>
 
-		<div class="glass-panel clickable" data-action="message">
-			<div class="icon-container">
-				<img src="Images/Mail.png">
-			</div>
-		</div>
+    <section id="projects">
+        <div class="big-projects">
+            <p class="title">Projects</p>
 
-		<div id="mobile-menu-toggle" class="glass-panel clickable mobile">
-			<div class="icon-container">
-				<img src="Images/Hamburger.png">
-			</div>
-		</div>
+            <div class="big-project">
+                <div class="img-container">
+                    <img src="images/Mini-AlphaGo.png" alt="A Go bot visual interface next to an annotated diagram of Monte-Carlo tree search">
+                </div>
+                <p class="meta">2025&nbsp;&nbsp;—&nbsp;&nbsp;Project Lead @ <a href="https://mdst.club/">MDST</a></p>
+                <p class="name">Mini-AlphaGo</p>
+                <p class="desc">
+                    A novel hybrid of AlphaGo and AlphaGo Zero for 9x9 Go using only computational libraries,
+                    including an in-house Go game environment, Monte-Carlo tree search, parallelized training, visual web interface, and Elo-rated bot arena.
+                </p>
+                <div class="links">
+                    <a href="https://github.com/MichiganDataScienceTeam/W25-mini-alphago/blob/master/README.md">Read More</a>
+                    <a href="https://github.com/MichiganDataScienceTeam/W25-mini-alphago/tree/master">Source Code</a>
+                </div>
+            </div>
 
-		<div id="mobile-menu" class="glass-panel mobile">
-			<a href="#about">About</a>
-			<a href="#works">Projects</a>
-			<a href="#publications">Publications</a>
-			<a href="#skills">Skills</a>
+            <div class="big-project">
+                <div class="img-container">
+                    <img src="images/Tuesday.png" alt="Overlapping panels of showing the GUI of the Tuesday web app">
+                </div>
+                <p class="meta">Ongoing&nbsp;&nbsp;—&nbsp;&nbsp;Founder @ <a href="https://tues.tech">Tuesday Technologies LLC</a></p>
+                <p class="name">Tuesday</p>
+                <p class="desc">
+                    Manages a free executive functioning web app for students with automated prioritization and workload visualization.
+                    Funded by business case competition winnings and data science contracting for businesses.
+                    Currently working projects for billion-dollar companies; contracted at ~$5k MRR with a larger amount pending.
+                </p>
+                <div class="links">
+                    <a href="https://tues.tech">Visit Website</a>
+                    <a href="https://github.com/Tuestech/v2">Source Code</a>
+                </div>
+            </div>
+        </div>
 
-			<div class="divider"></div>
+        <div class="mini-projects">
 
-			<img src="Images/Linkedin.png" data-link="https://www.linkedin.com/in/jeffrey-p-lu/">
-			<img src="Images/Github.png" data-link="https://github.com/USSiamaboat">
-			<img src="Images/Mail.png" data-action="message">
-		</div>
-	</nav>
+            <!-- The seemingly strange order of these elements
+             is actually just left to right, top to bottom order -->
+            
+            <div class="hover-shadow left"><div class="mini-project">
+                <img src="images/Fractals.gif">
+                <p class="name">Fractal Viewer</p>
+                <a href="#">Demo</a>
+                <a href="#">Source Code</a>
+            </div></div>
 
-	<div id="scroll-container">
-		<main>
-			<div id="hero">
-				<p>I'm <strong>Jeffrey</strong>,</p>
-				<div id="hero-desc">
-				</div>
+            <p class="title">Mini-Projects</p>
 
-				<div id="gradient-blur">
-					<div id="square1"></div>
-					<div id="square2"></div>
-				</div>
-			</div>
-			
-			<div id="about">
-				<p class="section-header">About</p>
-				<div class="container">
-					<div class="left">
-						<p>I’m a Data Science student in the Honors Program at the University of Michigan learning how to create and share value from quantitative analysis.</p>
-						
-						<p>Currently, I'm building an <a href="https://github.com/MichiganDataScienceTeam/W25-mini-alphago">ML project</a> at <a href="https://mdst.club/">MDST</a> and working as a data journalist at <a href="https://www.michigandaily.com/">The Michigan Daily</a>.</p>
+            <div class="hover-shadow right"><div class="mini-project">
+                <img src="images/Dogsheep.gif">
+                <p class="name">Dogsheep Beta</p>
+                <a href="#">Demo</a>
+                <a href="#">Source Code</a>
+            </div></div>
 
-						<div class="glass-panel clickable" data-link="#works" data-scrollto="works">Projects</div>
-						<div class="glass-panel clickable" data-link="#publications" data-scrollto="publications">Publications</div>
-					</div>
+            <div class="hover-shadow left"><div class="mini-project">
+                <img src="images/Primes.gif">
+                <p class="name">Fast Prime Spiral</p>
+                <a href="#hero" target="_self">Demo</a>
+                <a href="https://github.com/USSiamaboat/USSiamaboat.github.io/blob/dev/primes">Source Code</a>
+            </div></div>
 
-					<div class="right">
-						<p class="big-number">4+</p>
-						<p class="big-number">5+</p>
-						<p>Years&nbsp;of&nbsp;AI<br>experience</p>
-						<p>Years&nbsp;of <wbr>Web&nbsp;Dev<br>experience</p>
-					</div>
-				</div>
-			</div>
+            <div class="hover-shadow center"><div class="mini-project one-link">
+                <img src="images/GPT NTP.gif">
+                <p class="name">GPT Next Token Tree</p>
+                <!-- <a href="#">Demo</a> -->
+                <a href="https://github.com/USSiamaboat/GPT-NTP-Visualizer">Source Code</a>
+            </div></div>
 
-			<div id="works">
-				<p class="section-header">Projects</p>
+            <div class="hover-shadow right"><div class="mini-project">
+                <img src="images/Coming Soon.png">
+                <p class="name">Coming soon...</p>
+                <a href="#"></a>
+                <a href="#"></a>
+            </div></div>
 
-				<div class="work">
-					<div class="col1">
-						<div class="glass-panel icon-container">
-							<img src="Images/Works/Tuesday Logo.png">
-						</div>
+        </div>
+    </section>
 
-						<div class="glass-panel name">Tuesday</div>
+    <section id="publications">
+        <p class="title">Publications</p>
 
-						<div class="glass-panel desc">A web app that helps students manage their work and develop executive functioning skills by prioritizing their tasks and visualizing their workload according to personal productivity preferences.</div>
-					</div>
+        <div class="publication">
+            <p class="meta">2024&nbsp;&nbsp;—&nbsp;&nbsp;Conference Paper</p>
+            <p class="name">Deep Manifold Learning for Reading Comprehension and Logical Reasoning Tasks with Polytuplet Loss</p>
+            <p class="authors">Jeffrey Lu, Ivan Rodriguez</p>
+            <p class="keywords">Contrastive Learning, Deep Learning, NLP</p>
+            <div class="links">
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-53963-3_23">Read More</a>
+                <a href="https://github.com/USSiamaboat/polytuplet-loss">Source Code</a>
+            </div>
+        </div>
 
-					<div class="col2">
-						<div class="glass-panel preview">
-							<img src="Images/Works/Tuesday Cluster.png">
-						</div>
-						
-						<div class="glass-panel clickable" data-link="https://tues.tech">Open</div>
-						<div class="glass-panel clickable" data-link="https://github.com/Tuestech/v2">Code</div>
-					</div>
+        <div class="publication">
+            <p class="meta">2023&nbsp;&nbsp;—&nbsp;&nbsp;Opinion Article</p>
+            <p class="name">Loneliness and Self-Awareness in AI Chatbots</p>
+            <p class="authors">Jeffrey Lu</p>
+            <p class="keywords">Chatbots, Qualitative Analysis, Waffling</p>
+            <div class="links">
+                <a href="https://medium.com/@jeffrey.lu/loneliness-and-self-awareness-in-ai-chatbots-10c555c9a829">Read More</a>
+            </div>
+        </div>
 
-					<div class="col3 glass-panel">
-						<img src="Images/Skill Icons/Figma.png">
-						<img src="Images/Skill Icons/Javascript.png">
-						<img src="Images/Skill Icons/Django.png">
-						<img src="Images/Skill Icons/Postgres.png">
-						<img src="Images/Skill Icons/Python.png">
-						<img src="Images/Skill Icons/Heroku.png">
-					</div>
-				</div>
+        <div class="publication">
+            <p class="meta">2022&nbsp;&nbsp;—&nbsp;&nbsp;Course Paper&nbsp;&nbsp;(first available online in 2023)</p>
+            <p class="name">The Impact of Socioeconomic Factors on Health Disparities</p>
+            <p class="authors">Krish Khanna, Jeffrey Lu, Jay Warrier</p>
+            <p class="keywords">Data Science, Public Health</p>
+            <div class="links">
+                <a href="https://arxiv.org/abs/2212.04285">Read More</a>
+            </div>
+        </div>
+    </section>
 
-				<div class="work twocol">
-					<div class="col1">
-						<div class="glass-panel icon-container">
-							<img src="Images/Works/M3 Logo.png">
-						</div>
+    <section id="footer">
+        <div id="form">
+            <input type="email" id="email" placeholder="Email" autocomplete="off" maxlength="50">
+            <input type="text" id="message" placeholder="A short message" autocomplete="off" maxlength="500">
+            <button id="submit">
+                <img src="images/Submit.svg" alt="Submit">
+            </button>
+        </div>
 
-						<div class="glass-panel name">M3C</div>
+        <div id="extras">
+            <p>© Jeffrey Lu 2025. Coded from scratch with 🔥</p>
 
-						<div class="glass-panel desc">M3C is an international math modeling challenge, which provided a 14-hour period to develop mathematical and computational models that provide meaningful insights and solutions to real-world problems. My team was among the &lt;1% that were invited to finals and received a scholarship.</div>
-					</div>
-
-					<div class="col2">
-						<div class="glass-panel preview">
-							<img src="Images/Works/M3 Cluster.png">
-						</div>
-						
-						<div class="glass-panel clickable" data-link="https://m3challenge.siam.org/wp-content/uploads/FINALIST_17932.pdf">Paper</div>
-						<div class="glass-panel clickable" data-link="/Files/M3 Presentation.pdf">Slides</div>
-						<div class="glass-panel clickable" data-link="https://nbcchicago.app.link/3f35kH2URIb">Media</div>
-					</div>
-				</div>
-			</div>
-
-			<div id="minis">
-				<p class="section-header">Mini-Projects</p>
-
-				<div class="mini">
-					<div class="glass-panel content">
-						<img src="Images/Minis/Mini-AlphaGo.gif">
-
-						<p>AI Go + Web Interface (current)</p>
-					</div>
-
-					<div class="buttons">
-						<div class="glass-panel clickable" data-link="https://github.com/MichiganDataScienceTeam/W25-mini-alphago">Source</div>
-					</div>
-				</div>
-
-				<div class="mini">
-					<div class="glass-panel content">
-						<img src="Images/Minis/Fractals.gif">
-
-						<p>Fractal Viewer</p>
-					</div>
-
-					<div class="buttons">
-						<div class="glass-panel clickable" data-link="https://github.com/USSiamaboat/Fractal-Viewer">Source</div>
-						<div class="glass-panel clickable" data-link="https://jeffreylu.me/Fractal-Viewer/">Demo</div>
-					</div>
-				</div>
-
-				<div class="mini">
-					<div class="glass-panel content">
-						<img src="Images/Minis/GPT NTP.gif">
-
-						<p>GPT Next Token Prediction Tree</p>
-					</div>
-
-					<div class="buttons">
-						<div class="glass-panel clickable" data-link="https://github.com/USSiamaboat/GPT-NTP-Visualizer">Source</div>
-					</div>
-				</div>
-
-				<div class="mini">
-					<div class="glass-panel content">
-						<img src="Images/Minis/Dogsheep.gif">
-
-						<p>Dogsheep Beta</p>
-					</div>
-
-					<div class="buttons">
-						<div class="glass-panel clickable" data-link="https://github.com/USSiamaboat/Dogsheep-Beta">Source</div>
-						<div class="glass-panel clickable" data-link="https://jeffreylu.me/Dogsheep-Beta">Demo</div>
-					</div>
-				</div>
-			</div>
-
-			<div id="publications">
-				<p class="section-header">Publications</p>
-
-				<div class="publication">
-					<p class="meta">Published Research Paper   —   2023</p>
-					<p class="title">Deep Manifold Learning for Reading Comprehension and Logical Reasoning Tasks with Polytuplet Loss</p>
-					<p class="authors">Jeffrey Lu, Ivan Rodriguez</p>
-					<div class="buttons">
-						<div class="glass-panel clickable" data-link="https://link.springer.com/chapter/10.1007/978-3-031-53963-3_23">
-							Read
-						</div>
-						<div class="glass-panel clickable" data-link="https://github.com/USSiamaboat/polytuplet-loss">
-							Code
-						</div>
-					</div>
-				</div>
-
-				<div class="publication">
-					<p class="meta">Opinion Article   —   2023</p>
-					<p class="title">Inside LLMs: Loneliness and Self-Awareness in AI Chatbots</p>
-					<p class="authors">Jeffrey Lu</p>
-					<div class="buttons">
-						<div class="glass-panel clickable" data-link="https://medium.com/@jeffrey.lu/loneliness-and-self-awareness-in-ai-chatbots-10c555c9a829">
-							Read
-						</div>
-					</div>
-				</div>
-
-				<div class="publication">
-					<p class="meta">Academic Paper   —   2022 <wbr>(Published&nbsp;2023)</p>
-					<p class="title">The Impact of Socioeconomic Factors on Health Disparities</p>
-					<p class="authors">Krish Khanna, Jeffrey Lu, Jay Warrier</p>
-					<div class="buttons">
-						<div class="glass-panel clickable" data-link="https://arxiv.org/abs/2212.04285">
-							Read
-						</div>
-					</div>
-				</div>
-
-				<div class="publication">
-					<p class="meta">Academic Paper   —   2021 <wbr>(Published&nbsp;2023)</p>
-					<p class="title">Computational Validation of a Mathematical Model of Stable Multi-Species Communities in a Hawk Dove Game</p>
-					<p class="authors">Jeffrey Lu</p>
-					<div class="buttons">
-						<div class="glass-panel clickable" data-link="https://arxiv.org/abs/2304.00687">
-							Read
-						</div>
-						<div class="glass-panel clickable" data-link="https://github.com/USSiamaboat/hawkdove">
-							Code
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div id="skills">
-				<p class="section-header">Skills</p>
-
-				<div class="container">
-					<div class="glass-panel">
-						<div class="icon-container"><img src="/Images/Skill Icons/HTML.png"></div>
-						<p class="label">HTML</p>
-					</div>
-
-					<div class="glass-panel">
-						<div class="icon-container"><img src="/Images/Skill Icons/CSS.png"></div>
-						<p class="label">CSS</p>
-					</div>
-
-					<div class="glass-panel">
-						<div class="icon-container"><img src="/Images/Skill Icons/Javascript.png"></div>
-						<p class="label">Javascript</p>
-					</div>
-
-					<div class="glass-panel">
-						<div class="icon-container"><img src="/Images/Skill Icons/Python.png"></div>
-						<p class="label">Python</p>
-					</div>
-
-					<div class="glass-panel">
-						<div class="icon-container"><img src="/Images/Skill Icons/Django.png"></div>
-						<p class="label">Django</p>
-					</div>
-
-					<div class="glass-panel">
-						<div class="icon-container"><img src="/Images/Skill Icons/Postgres.png"></div>
-						<p class="label">Postgres</p>
-					</div>
-
-					<div class="glass-panel">
-						<div class="icon-container"><img src="/Images/Skill Icons/Heroku.png"></div>
-						<p class="label">Heroku</p>
-					</div>
-
-					<div class="glass-panel">
-						<div class="icon-container"><img src="/Images/Skill Icons/Figma.png"></div>
-						<p class="label">Figma</p>
-					</div>
-
-					<div class="glass-panel">
-						<div class="icon-container"><img src="/Images/Skill Icons/Java.png"></div>
-						<p class="label">Java</p>
-					</div>
-
-					<div class="glass-panel">
-						<div class="icon-container"><img src="/Images/Skill Icons/Streamlit.png"></div>
-						<p class="label">Streamlit</p>
-					</div>
-
-					<div class="glass-panel">
-						<div class="icon-container"><img src="/Images/Skill Icons/Sklearn.png"></div>
-						<p class="label">Sklearn</p>
-					</div>
-
-					<div class="glass-panel">
-						<div class="icon-container"><img src="/Images/Skill Icons/Tensorflow.png"></div>
-						<p class="label">Tensorflow</p>
-					</div>
-
-					<div class="glass-panel">
-						<div class="icon-container"><img src="/Images/Skill Icons/GAS.png"></div>
-						<p class="label">GAS</p>
-					</div>
-
-					<div class="glass-panel">
-						<div class="icon-container"><img src="/Images/Skill Icons/Git.png"></div>
-						<p class="label">Git</p>
-					</div>
-				</div>
-			</div>
-		</main>
-
-		<footer class="glass-panel">
-			<div class="icons">
-				<div class="icon-container" data-link="https://www.linkedin.com/in/jeffrey-p-lu/"><img src="Images/Linkedin.png"></div>
-				<div class="icon-container" data-link="https://github.com/USSiamaboat"><img src="Images/Github.png"></div>
-				<div class="icon-container" data-action="message"><img src="Images/Mail.png"></div>
-			</div>
-			<p>© Jeffrey Lu 2025. Coded from scratch with ❤️</p>
-		</footer>
-	</div>
-
+            <a href="https://linkedin.com/in/jeffrey-p-lu">Linkedin</a>
+            <a href="https://github.com/USSiamaboat">Github</a>
+        </div>
+    </section>
 </body>
 </html>
