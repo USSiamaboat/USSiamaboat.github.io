@@ -472,6 +472,14 @@ section .title {
     background: #FFFFFF;
 }
 
+#form input:focus {
+    box-shadow: 0 0 10px #9191C9FF;
+}
+
+#form input::placeholder {
+    color: #858585;
+}
+
 #form button {
     aspect-ratio: 1;
     display: grid;
