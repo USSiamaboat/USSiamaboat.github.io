@@ -2,14 +2,223 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" href="styles.css">
+    <base target="_blank"> 
 
-    <title>Jeffrey Lu</title>
+	<!-- Regular Meta -->
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="/Images/Favicon.png">
+	<title>Jeffrey Lu</title>
+	<meta name="description" content="I do computer things">
+
+    <!-- Open graph meta -->
+	<meta property="og:title" content="Jeffrey Lu"/>
+	<meta property="og:site_name" content="Jeffrey Lu">
+
+	<meta property="og:description" content="I do computer things"/>
+	<meta property="og:url" content="https://jeffreylu.me"/>
+
+	<meta property="og:image" content="/Images/blank1px.png"/>
+	<meta property="og:type" content="website"/>
+
+	<!-- CSS and JS -->
+	<link rel="stylesheet" href="styles.css">
+	<script defer src="script.js"></script>
+
+    <!-- Font loading -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/ibmplexsans/v22/zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYbSB4Zh.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="fonts.css">
 </head>
 <body>
-    
-    <script src="script.js"></script>
+    <svg width="0" height="0" style="position: fixed; overflow: hidden;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <clipPath id="hexagon" clipPathUnits="objectBoundingBox">
+                <path d="M.9912.4719.7669.0282C.7582.0108.7419 0 .7243 0H.2757C.2581 0 .2418.0108.233.0282L.0088.4719C0 .4892 0 .5108.0088.5281L.233.9719C.2418.9892.2581 1 .2757 1H.7243C.7419 1 .7582.9892.7669.9719L.9912.5281C1 .5108 1 .4892.9912.4719Z" />
+            </clipPath>
+        </defs>
+    </svg>
+
+    <nav>
+        <a target="_self" href="#about">About</a>
+        <a target="_self" href="#projects">Projects</a>
+        <a target="_self" href="#publications">Publications</a>
+        <a target="_self" href="#footer">Contact</a>
+    </nav>
+
+    <div id="hero">
+        <svg id="spiral" viewBox="-1000 -1000 2000 2000" preserveAspectRatio="xMidYMid meet"></svg>
+
+        <div id="intro">
+            <p id="name">I'm <strong>Jeffrey</strong>,</p>
+            <p id="title">Loading...</p>
+        </div>
+
+        <p id="tooltip" style="display: none;">0</p>
+
+        <p id="spiral-desc">
+            Plot of (r, θ) = (p, p) for prime p with residue classes modulo 44 highlighted. <a href="https://www.3blue1brown.com/lessons/prime-spirals">Learn More</a>
+        </p>
+    </div>
+
+    <section id="about">
+        <p class="title">About</p>
+
+        <p>
+            I study Data Science @ UMich Honors.<br>
+            I’m currently researching for <a href="https://www.lsi.umich.edu/science/our-labs/cianfrocco-lab">UMich LSI</a>,<br>
+            privately contracting as a data scientist,<br>
+            building an algo trading project for <a href="https://mdst.club/">MDST</a>,<br>
+            and writing for the <a href="https://www.michigandaily.com/">Michigan Daily</a>
+        </p>
+
+        <div id="years">
+            <div class="year">
+                <p>4+</p>
+                <p>Years of<br>Data Science</p>
+            </div>
+
+            <div class="year">
+                <p>5+</p>
+                <p>Years of<br>Web Dev</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="big-projects">
+            <p class="title">Projects</p>
+
+            <div class="big-project">
+                <div class="img-container">
+                    <img src="images/Mini-AlphaGo.png" alt="A Go bot visual interface next to an annotated diagram of Monte-Carlo tree search">
+                </div>
+                <p class="meta">2025&nbsp;&nbsp;—&nbsp;&nbsp;Project Lead @ <a href="https://mdst.club/">MDST</a></p>
+                <p class="name">Mini-AlphaGo</p>
+                <p class="desc">
+                    A novel hybrid of AlphaGo and AlphaGo Zero for 9x9 Go using only computational libraries,
+                    including an in-house Go game environment, Monte-Carlo tree search, parallelized training, visual web interface, and Elo-rated bot arena.
+                </p>
+                <div class="links">
+                    <a href="https://github.com/MichiganDataScienceTeam/W25-mini-alphago/blob/master/README.md">Read More</a>
+                    <a href="https://github.com/MichiganDataScienceTeam/W25-mini-alphago/tree/master">Source Code</a>
+                </div>
+            </div>
+
+            <div class="big-project">
+                <div class="img-container">
+                    <img src="images/Tuesday.png" alt="Overlapping panels of showing the GUI of the Tuesday web app">
+                </div>
+                <p class="meta">Ongoing&nbsp;&nbsp;—&nbsp;&nbsp;Founder @ <a href="https://tues.tech">Tuesday Technologies LLC</a></p>
+                <p class="name">Tuesday</p>
+                <p class="desc">
+                    Manages a free executive functioning web app for students with automated prioritization and workload visualization.
+                    Funded by business case competition winnings and data science contracting for businesses.
+                    Currently working projects for billion-dollar companies; contracted at ~$5k MRR with a larger amount pending.
+                </p>
+                <div class="links">
+                    <a href="https://tues.tech">Visit Website</a>
+                    <a href="https://github.com/Tuestech/v2">Source Code</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mini-projects">
+
+            <!-- The seemingly strange order of these elements
+             is actually just left to right, top to bottom order -->
+            
+            <div class="hover-shadow left"><div class="mini-project">
+                <img src="images/Fractals.gif">
+                <p class="name">Fractal Viewer</p>
+                <a href="#">Demo</a>
+                <a href="#">Source Code</a>
+            </div></div>
+
+            <p class="title">Mini-Projects</p>
+
+            <div class="hover-shadow right"><div class="mini-project">
+                <img src="images/Dogsheep.gif">
+                <p class="name">Dogsheep Beta</p>
+                <a href="#">Demo</a>
+                <a href="#">Source Code</a>
+            </div></div>
+
+            <div class="hover-shadow left"><div class="mini-project">
+                <img src="images/Primes.gif">
+                <p class="name">Fast Prime Spiral</p>
+                <a href="#hero" target="_self">Demo</a>
+                <a href="https://github.com/USSiamaboat/USSiamaboat.github.io/blob/dev/primes">Source Code</a>
+            </div></div>
+
+            <div class="hover-shadow center"><div class="mini-project one-link">
+                <img src="images/GPT NTP.gif">
+                <p class="name">GPT Next Token Tree</p>
+                <!-- <a href="#">Demo</a> -->
+                <a href="https://github.com/USSiamaboat/GPT-NTP-Visualizer">Source Code</a>
+            </div></div>
+
+            <div class="hover-shadow right"><div class="mini-project">
+                <img src="images/Coming Soon.png">
+                <p class="name">Coming soon...</p>
+                <a href="#"></a>
+                <a href="#"></a>
+            </div></div>
+
+        </div>
+    </section>
+
+    <section id="publications">
+        <p class="title">Publications</p>
+
+        <div class="publication">
+            <p class="meta">2024&nbsp;&nbsp;—&nbsp;&nbsp;Conference Paper</p>
+            <p class="name">Deep Manifold Learning for Reading Comprehension and Logical Reasoning Tasks with Polytuplet Loss</p>
+            <p class="authors">Jeffrey Lu, Ivan Rodriguez</p>
+            <p class="keywords">Contrastive Learning, Deep Learning, NLP</p>
+            <div class="links">
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-53963-3_23">Read More</a>
+                <a href="https://github.com/USSiamaboat/polytuplet-loss">Source Code</a>
+            </div>
+        </div>
+
+        <div class="publication">
+            <p class="meta">2023&nbsp;&nbsp;—&nbsp;&nbsp;Opinion Article</p>
+            <p class="name">Loneliness and Self-Awareness in AI Chatbots</p>
+            <p class="authors">Jeffrey Lu</p>
+            <p class="keywords">Chatbots, Qualitative Analysis, Waffling</p>
+            <div class="links">
+                <a href="https://medium.com/@jeffrey.lu/loneliness-and-self-awareness-in-ai-chatbots-10c555c9a829">Read More</a>
+            </div>
+        </div>
+
+        <div class="publication">
+            <p class="meta">2022&nbsp;&nbsp;—&nbsp;&nbsp;Course Paper&nbsp;&nbsp;(first available online in 2023)</p>
+            <p class="name">The Impact of Socioeconomic Factors on Health Disparities</p>
+            <p class="authors">Krish Khanna, Jeffrey Lu, Jay Warrier</p>
+            <p class="keywords">Data Science, Public Health</p>
+            <div class="links">
+                <a href="https://arxiv.org/abs/2212.04285">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="footer">
+        <div id="form">
+            <input type="text" id="email" placeholder="Email" autocomplete="off">
+            <input type="text" id="message" placeholder="A short message" autocomplete="off">
+            <button id="submit">
+                <img src="images/Submit.svg" alt="Submit">
+            </button>
+        </div>
+
+        <div id="extras">
+            <p>© Jeffrey Lu 2025. Coded from scratch with 🔥</p>
+
+            <a href="https://linkedin.com/in/jeffrey-p-lu">Linkedin</a>
+            <a href="https://github.com/USSiamaboat">Github</a>
+        </div>
+    </section>
 </body>
 </html>
