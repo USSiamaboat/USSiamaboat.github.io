@@ -372,130 +372,203 @@ section .title {
 /* Mini-Projects        */
 /* ==================== */
 
-.mini-projects {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-areas:
-        "l1 mini-projects r1"
-        "l2 c r2";
-    --gap: 14px;
-    row-gap: var(--gap);
-    column-gap: calc(var(--gap) / sqrt(3) * 2);
-}
+@media (min-width: 850.5px) {
+    .mini-projects {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-areas:
+            "l1 mini-projects r1"
+            "l2 c r2";
+        --gap: 14px;
+        row-gap: var(--gap);
+        column-gap: calc(var(--gap) / sqrt(3) * 2);
+    }
 
-.mini-projects .title {
-    grid-area: mini-projects;
-    text-align: center;
-}
+    .mini-projects .title {
+        grid-area: mini-projects;
+        text-align: center;
+    }
 
-.hover-shadow {
-    width: 120%;
-    filter: drop-shadow(0 0 2px #9191c988);
-    transition: filter 0.1s linear;
-    pointer-events: none;
-}
+    .hover-shadow {
+        width: 120%;
+        filter: drop-shadow(0 0 2px #9191c988);
+        transition: filter 0.1s linear;
+        pointer-events: none;
+    }
 
-.hover-shadow:has(.mini-project:hover) {
-    filter: drop-shadow(0 0 10px #9191c988);
-}
+    .hover-shadow:has(.mini-project:hover) {
+        filter: drop-shadow(0 0 10px #9191c988);
+    }
 
-.mini-projects .left {
-    justify-self: left;
-}
+    .mini-projects .left {
+        justify-self: left;
+    }
 
-.mini-projects .center {
-    justify-self: center;
-    transform: translateY(calc(-50% - var(--gap) / 2));
-}
+    .mini-projects .center {
+        justify-self: center;
+        transform: translateY(calc(-50% - var(--gap) / 2));
+    }
 
-.mini-projects .right {
-    justify-self: right;
-}
+    .mini-projects .right {
+        justify-self: right;
+    }
 
-.mini-project {
-    position: relative;
-    display: grid;
-    grid-template-areas:
-        "name name"
-        "link1 link2";
-    row-gap: 10px;
-    column-gap: 20px;
-    align-content: center;
-    justify-content: center;
-    aspect-ratio: calc(2 / sqrt(3));
-    overflow: hidden;
-    background: #DDDDDD;
-    clip-path: url(#hexagon);
-    -webkit-clip-path: url(#hexagon);
-    pointer-events: all;
-}
+    .mini-project {
+        position: relative;
+        display: grid;
+        grid-template-areas:
+            "name name"
+            "link1 link2";
+        row-gap: 10px;
+        column-gap: 20px;
+        align-content: center;
+        justify-content: center;
+        aspect-ratio: calc(2 / sqrt(3));
+        overflow: hidden;
+        background: #DDDDDD;
+        clip-path: url(#hexagon);
+        -webkit-clip-path: url(#hexagon);
+        pointer-events: all;
+    }
 
-.mini-project.one-link {
-    grid-template-areas:
-        "name"
-        "link1";
-}
+    .mini-project.one-link {
+        grid-template-areas:
+            "name"
+            "link1";
+    }
 
-.mini-project img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: filter 0.1s linear;
-}
+    .mini-project img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: filter 0.1s linear;
+    }
 
-.mini-project *:not(img) {
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-}
+    .mini-project *:not(img) {
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+    }
 
-.mini-project:hover *:not(img) {
-    opacity: 1;
-}
+    .mini-project:hover *:not(img) {
+        opacity: 1;
+    }
 
-.mini-project:hover img {
-    filter: blur(4px) contrast(0.3) brightness(1.5);
-}
+    .mini-project:hover img {
+        filter: blur(4px) contrast(0.3) brightness(1.5);
+    }
 
-.mini-project p {
-    text-align: center;
-    justify-self: center;
-    padding: 0 60px;
-    font-size: 28px;
-    font-weight: bold;
-    grid-area: name;
-    text-shadow: #FFFFFF 0 0 10px, #FFFFFF 0 0 20px, #FFFFFF 0 0 30px;
-}
+    .mini-project p {
+        text-align: center;
+        justify-self: center;
+        padding: 0 60px;
+        font-size: 28px;
+        font-weight: bold;
+        grid-area: name;
+        text-shadow: #FFFFFF 0 0 10px, #FFFFFF 0 0 20px, #FFFFFF 0 0 30px;
+    }
 
-.mini-project a {
-    font-size: 20px;
-    text-shadow: #FFFFFF 0 0 10px, #FFFFFF 0 0 20px, #FFFFFF 0 0 30px;
-    filter: none;
-}
+    .mini-project a {
+        font-size: 20px;
+        text-shadow: #FFFFFF 0 0 10px, #FFFFFF 0 0 20px, #FFFFFF 0 0 30px;
+        filter: none;
+    }
 
-.mini-project a:hover {
-    color: #1A1A66;
-}
+    .mini-project a:hover {
+        color: #1A1A66;
+    }
 
-.mini-project a:nth-of-type(1) {
-    justify-self: end;
-}
+    .mini-project a:nth-of-type(1) {
+        justify-self: end;
+    }
 
-.mini-project.one-link a:nth-of-type(1) {
-    justify-self: center;
-}
+    .mini-project.one-link a:nth-of-type(1) {
+        justify-self: center;
+    }
 
-.mini-project a:nth-of-type(2) {
-    justify-self: start;
+    .mini-project a:nth-of-type(2) {
+        justify-self: start;
+    }
 }
 
 @media (max-width: 850px) {
     .mini-projects {
+        display: grid;
+        grid-template-columns: 100%;
+        margin-top: 100px;
+    }
+
+    .mini-projects .title {
+        grid-row: 1;
+    }
+
+    .mini-project {
+        display: grid;
+        grid-template-areas:
+            "img img img img"
+            "pad1 a1 a2 pad2";
+        grid-template-columns: 1fr max-content max-content 1fr;
+        row-gap: 10px;
+        margin: 40px 0;
+        position: relative;
+        overflow: hidden;
+        height: min-content;
+    }
+
+    .mini-projects .hover-shadow:nth-of-type(1) {
+        margin-top: 0px;
+    }
+
+    .mini-projects .hover-shadow:last-child {
+        margin-bottom: 0;
+    }
+
+    .mini-project img {
+        grid-area: img;
+        width: 100%;
+        border-radius: 15px;
+        aspect-ratio: 1.3;
+        object-fit: cover;
+    }
+
+    .mini-project .name {
+        position: absolute;
+        width: max-content;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 0 10px #9191C988;
+        border-radius: 1000px;
+        background: #FFFFFF88;
+        backdrop-filter: blur(5px) brightness(1.3);
+        padding: 5px 10px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .mini-project:has(a) .name {
+        bottom: 50px;
+    }
+
+    .mini-project a {
+        font-size: 20px;
+        margin: 0 10px;
+    }
+
+    .mini-project a.no-mobile {
         display: none;
+    }
+
+    .mini-project a:nth-of-type(1) {
+        grid-area: a1;
+    }
+
+    .mini-project a:nth-of-type(2) {
+        grid-area: a2;
     }
 }
 
