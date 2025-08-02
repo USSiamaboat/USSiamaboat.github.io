@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precomputed spiral test</title>
+
+    <style>
+        circle {
+            pointer-events: stroke;
+            r: 4px;
+            fill: var(--fill-color);
+            stroke: transparent;
+            stroke-width: var(--stroke-width);
+            transition: stroke-width 0.2s ease-in-out, fill 0.2s ease-in-out;
+        }
+
+        g {
+            --stroke-width: 25px;
+            transform-box: fill-box;
+            transform-origin: center;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        g:hover {
+            transform: scale(2);
+            --stroke-width: 10px;
+        }
+
+        use:hover {
+            --fill-color: #3333CC !important;
+        }
+
+        use {
+            --fill-color: #B3B3CC;
+            cursor: pointer;
+            position: absolute;
+        }
+
+        #tooltip {
+            display: block;
+            position: absolute;
+            fill: #3333CC;
+            font-weight: bold;
+            text-shadow: 0 0 10px white;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="hero">
+        <p>Hello world</p>
+    </div>
+
+    <script>
+        // Inline svg
+        fetch("precomputed.svg")
+            .then(res => res.text())
+            .then(text => {
+                const elt = document.getElementById("hero")
+                elt.innerHTML = text + elt.innerHTML
+            })
+            .catch((e) => console.log(":(", e))
+    </script>
+</body>
+</html>
