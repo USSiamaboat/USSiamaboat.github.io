@@ -350,6 +350,6 @@ submitElt.addEventListener("click", () => {
 // Run all
 // ==================== //
 window.addEventListener('load', () => {
-  runTitleGlitch()
-  runPrimeSpiral()
+    runTitleGlitch()
+    runPrimeSpiral()
 })
