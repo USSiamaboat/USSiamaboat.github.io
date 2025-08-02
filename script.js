@@ -97,7 +97,7 @@ function glitchTo(target, callback) {
 
 // Inline svg
 function inlineSVG() {
-    fetch("images/precomputed.svg")
+    fetch("images/precomputed-min.svg")
         .then(res => res.text())
         .then(text => {
             const elt = document.getElementById("hero")
