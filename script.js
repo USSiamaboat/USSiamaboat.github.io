@@ -97,13 +97,13 @@ function glitchTo(target, callback) {
 
 // Inline svg
 function inlineSVG() {
-    fetch("images/precomputed-min.svg")
+    fetch("images/precomputed.svg")
         .then(res => res.text())
         .then(text => {
             const elt = document.getElementById("hero")
             const parser = new DOMParser()
             const svgDoc = parser.parseFromString(text, "text/html")
-            elt.prepend(svgDoc.documentElement)
+            elt.prepend(svgDoc.body.firstChild)
         })
         .catch(e => console.log(":(", e))
 }
