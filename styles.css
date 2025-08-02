@@ -86,21 +86,6 @@ nav a:hover {
     width: 100vw;
 }
 
-#spiral circle {
-    cursor: pointer;
-    pointer-events: stroke;
-    r: 4px;
-    fill: #B3B3CC;
-    stroke: #00000000;
-    stroke-width: 25px;
-    transition: r 0.1s ease-in-out, fill 0.1s ease-in-out;
-}
-
-#spiral circle:hover {
-    fill: #3333CC !important;
-    r: 8px;
-}
-
 #spiral-desc {
     position: absolute;
     color: #9191C9;
