@@ -132,6 +132,7 @@ nav a:hover {
 
 #intro #title {
     font-size: 32px;
+    line-height: 42px;
     white-space: nowrap;
     overflow: hidden;
 }
