@@ -8,11 +8,10 @@ const titleElt = document.getElementById("title")
 const BLANK = "⠀"
 const GLITCHES = "!@#$%^&[](){}"
 const TITLES = [
-    "Data Scientist",
     "ML Researcher",
-    "Quantitative Trader",
-    "Award-Winning Pianist",
-    "Web Developer"
+    "Data Scientist",
+    "Quantitative Researcher",
+    "Award-Winning Pianist"
 ]
 const MAX_TITLE_LEN = TITLES.reduce((acc, curr) => Math.max(acc, curr.length), 0)
 const GLITCH_DELAY = 30
@@ -66,7 +65,7 @@ function glitchTo(target, callback) {
 
         titleElt.innerText = newText
     }
-    
+
     // Glitch all
     let lastDelay = 0
     for (let i = 1; i <= titleElt.innerText.length; i++) {
@@ -97,7 +96,7 @@ function glitchTo(target, callback) {
 
 // Inline svg
 function inlineSVG() {
-    fetch("images/precomputed.svg")
+    fetch("images/precomputed.svg", { credentials: "omit" })
         .then(res => res.text())
         .then(text => {
             const elt = document.getElementById("hero")
@@ -162,7 +161,7 @@ async function angryForm(message = "Form couldn't send!") {
     formElt.classList.add("angry")
     storeValue(emailElt, "Error!")
     storeValue(messageElt, message)
-    
+
     await delay(ANGRY_LEN)
 
     formElt.classList.remove("angry")
@@ -181,7 +180,7 @@ function validate(data) {
         angryForm("Invalid email")
         return false
     }
-    
+
     // TODO: maybe add more validation if it becomes a problem
 
     return true
@@ -236,7 +235,7 @@ submitElt.addEventListener("click", () => {
 
 // Run all
 // ==================== //
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
     inlineSVG()
     runTitleGlitch()
 })

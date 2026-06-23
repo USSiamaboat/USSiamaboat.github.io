@@ -1,14 +1,17 @@
-# Web Portfolio
+# My Portfolio
 
-This is the 2025 revision of my web portfolio.
-Hopefully, this will last me at least as long as the previous one.
+This is the 2026 revision of my web portfolio, which is a minor revision of the 2025 version.
 
-There are a few areas that I'm particularly happy that I fixed with this revision:
-- Finally found a nice animation to put at the very top
-- A slightly more matured (hopefully) design without the excessive pagination and card nesting I struggled with earlier
-- Solved some genuinely challenging CSS problems inherent to my ambitious (read: I forgot that I also had to implement) design
+The main changes this time around are:
+- Content updates (though fairly delayed)
+- Better loading order + less page shift on load
+- Optimized prime spiral to reduce the impact on DOM clutter
 
-However, there are still some minor technical issues, which I will do my best to track using Github Issues on this project's repo.
-I accomplished some incredible amounts of procrastination while making this, so I had to push this to main at a slightly lower polish than I would have liked in order to make time for other commitments.
+At some point soon, I'd like to:
+- Add an experience section (since I actually have stuff to put there now)
+- Choose a new hero graphic that doesn't involve hundreds of interactive DOM elements
+
+Overcommitted to alot of stuff recently so it will probably be a while before I can do a full redesign,
+but maybe one day I will decide that this looks too much like AI slop and use some generative organic intelligence to make a new site.
 
 That's all. Thanks for stopping by!

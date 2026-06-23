@@ -29,6 +29,9 @@
 	<link rel="stylesheet" href="styles.css">
 	<script defer src="script.js"></script>
 
+	<!-- Load spiral before js runs -->
+	<link rel="preload" href="images/precomputed.svg" as="fetch" crossorigin="anonymous">
+
     <!-- Font loading -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.gstatic.com/s/ibmplexsans/v22/zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYbSB4Zh.woff2" as="font" type="font/woff2" crossorigin>
@@ -69,20 +72,20 @@
         <p>
             I study Data Science @ UMich Honors.<br>
             I’m currently researching for <a href="https://www.lsi.umich.edu/science/our-labs/cianfrocco-lab">UMich LSI</a>,<br>
-            privately contracting as a data scientist,<br>
-            building an algo trading project for <a href="https://mdst.club/">MDST</a>,<br>
-            and writing for the <a href="https://www.michigandaily.com/">Michigan Daily</a>
+            working on a world model project for <a href="https://mdst.club/">MDST</a>,<br>
+            building agentic systems for private clients,<br>
+            and (will be) studying abroad at LSE.
         </p>
 
         <div id="years">
             <div class="year">
-                <p>4+</p>
+                <p>6+</p>
                 <p>Years of<br>Data Science</p>
             </div>
 
             <div class="year">
                 <p>5+</p>
-                <p>Years of<br>Web Dev</p>
+                <p>Years of<br>ML Dev</p>
             </div>
         </div>
     </section>
@@ -90,6 +93,22 @@
     <section id="projects">
         <div class="big-projects">
             <p class="title">Projects</p>
+
+            <div class="big-project">
+                <div class="img-container">
+                    <img src="images/PaperZero.png" alt="A Go bot visual interface next to an annotated diagram of Monte-Carlo tree search">
+                </div>
+                <p class="meta">2026&nbsp;&nbsp;—&nbsp;&nbsp;Project Lead @ <a href="https://mdst.club/">MDST</a></p>
+                <p class="name">PaperZero</p>
+                <p class="desc">
+                    An exploration of latent trajectory diffusion and Monte-Carlo tree search approaches for efficient 2D origami inverse design
+                    with significantly more robust empirical performance on long-horizon targets compared to supervised and RL baselines.
+                </p>
+                <div class="links">
+                    <a href="https://github.com/MichiganDataScienceTeam/W26-PaperZero/blob/main/README.md">Read More</a>
+                    <a href="https://github.com/MichiganDataScienceTeam/W26-PaperZero/tree/main">Source Code</a>
+                </div>
+            </div>
 
             <div class="big-project">
                 <div class="img-container">
@@ -111,16 +130,15 @@
                 <div class="img-container">
                     <img src="images/Tuesday.png" alt="Overlapping panels of showing the GUI of the Tuesday web app">
                 </div>
-                <p class="meta">Ongoing&nbsp;&nbsp;—&nbsp;&nbsp;Founder @ <a href="https://tues.tech">Tuesday Technologies LLC</a></p>
-                <p class="name">Tuesday</p>
+                <p class="meta">Ongoing&nbsp;&nbsp;—&nbsp;&nbsp;Founder, FDE @ <a href="https://tues.tech">Tuesday Technologies LLC</a></p>
+                <p class="name">Tuesday Technologies</p>
                 <p class="desc">
-                    Manages a free executive functioning web app for students with automated prioritization and workload visualization.
-                    Funded by business case competition winnings and data science contracting for businesses.
-                    Currently working projects for billion-dollar companies; contracted at ~$5k MRR with a larger amount pending.
+                    ML engineering and data science contracting at scale through forward deployed engineering.
+                    Notable projects include an agentic LLM-assisted knowledge management system for domain-specific engineering expertise
+                    and an enterprise-scale data error detection and correction pipeline.
                 </p>
                 <div class="links">
                     <a href="https://tues.tech">Visit Website</a>
-                    <a href="https://github.com/Tuestech/v2">Source Code</a>
                 </div>
             </div>
         </div>
@@ -154,14 +172,15 @@
             </div></div>
 
             <div class="hover-shadow center"><div class="mini-project one-link">
+                <img src="images/Mini-Stocks.gif" loading="lazy">
+                <p class="name">Mini-Stocks</p>
+                <a href="https://github.com/MichiganDataScienceTeam/F25-Mini-Stocks">Source Code</a>
+            </div></div>
+
+            <div class="hover-shadow right"><div class="mini-project one-link">
                 <img src="images/GPT NTP.gif" loading="lazy">
                 <p class="name">GPT Next Token Tree</p>
                 <a href="https://github.com/USSiamaboat/GPT-NTP-Visualizer">Source Code</a>
-            </div></div>
-
-            <div class="hover-shadow right"><div class="mini-project">
-                <img src="images/Coming Soon.png" loading="lazy">
-                <p class="name">Coming soon...</p>
             </div></div>
 
         </div>
@@ -169,6 +188,16 @@
 
     <section id="publications">
         <p class="title">Publications</p>
+        
+        <div class="publication">
+            <p class="meta">2025&nbsp;&nbsp;—&nbsp;&nbsp;Data Journalism (The Michigan Daily)</p>
+            <p class="name">Buying prestige on Product Hunt: How tech startups manufacture artificial success</p>
+            <p class="authors">Jeffrey Lu</p>
+            <p class="keywords">Data Science, Entrepreneurship</p>
+            <div class="links">
+                <a href="https://www.michigandaily.com/web/data/buying-prestige-on-product-hunt-how-tech-startups-manufacture-artificial-success/">Read More</a>
+            </div>
+        </div>
 
         <div class="publication">
             <p class="meta">2024&nbsp;&nbsp;—&nbsp;&nbsp;Conference Paper</p>
@@ -178,16 +207,6 @@
             <div class="links">
                 <a href="https://link.springer.com/chapter/10.1007/978-3-031-53963-3_23">Read More</a>
                 <a href="https://github.com/USSiamaboat/polytuplet-loss">Source Code</a>
-            </div>
-        </div>
-
-        <div class="publication">
-            <p class="meta">2023&nbsp;&nbsp;—&nbsp;&nbsp;Opinion Article</p>
-            <p class="name">Loneliness and Self-Awareness in AI Chatbots</p>
-            <p class="authors">Jeffrey Lu</p>
-            <p class="keywords">Chatbots, Qualitative Analysis, Waffling</p>
-            <div class="links">
-                <a href="https://medium.com/@jeffrey.lu/loneliness-and-self-awareness-in-ai-chatbots-10c555c9a829">Read More</a>
             </div>
         </div>
 
@@ -212,7 +231,7 @@
         </div>
 
         <div id="extras">
-            <p>© Jeffrey Lu 2026. Cooked from scratch with 🔥</p>
+            <p>© Jeffrey Lu 2026. Made from scratch.</p>
 
             <a href="https://linkedin.com/in/jeffrey-p-lu">Linkedin</a>
             <a href="https://github.com/USSiamaboat">Github</a>

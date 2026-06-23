@@ -135,33 +135,25 @@ function draw() {
     svgStyles.innerHTML = 
     `circle {
         pointer-events: stroke;
-        r: 4px;
+        r: var(--r, 4px);
         fill: var(--fill-color);
         stroke: transparent;
         stroke-width: var(--stroke-width);
-        transition: stroke-width 0.2s ease-in-out, fill 0.2s ease-in-out;
-    }
-
-    g {
-        --stroke-width: 25px;
-        transform-box: fill-box;
-        transform-origin: center;
-        transition: transform 0.2s ease-in-out;
-    }
-
-    g:hover {
-        transform: scale(2);
-        --stroke-width: 10px;
-    }
-
-    use:hover {
-        --fill-color: ${COLOR2} !important;
+        transition: stroke-width 0.2s ease-in-out, fill 0.2s ease-in-out, r 0.2s ease-in-out;
     }
 
     use {
         --fill-color: ${COLOR1};
+        --r: 4px;
+        --stroke-width: 25px;
         cursor: pointer;
         position: absolute;
+    }
+
+    use:hover {
+        --fill-color: ${COLOR2} !important;
+        --r: 8px;
+        --stroke-width: 10px;
     }
 
     #tooltip {
@@ -188,7 +180,7 @@ function drawPoint(p) {
 
     if (Math.abs(x) > SVG_VIEWBOX_WIDTH || Math.abs(y) > SVG_VIEWBOX_HEIGHT) { return "" } // Don't draw out of bounds
 
-    return `<g><use href="#super-important-circle" id="${p}" x="${x}" y="${y}"/></g>`
+    return `<use href="#super-important-circle" id="${p}" x="${x}" y="${y}"/>`
 }
 
 // Generate primes

@@ -1,5 +1,5 @@
 :root {
-    color: #000;
+    color: #000000;
     font-family: "IBM Plex Sans", sans-serif;
     scroll-behavior: smooth;
 }
@@ -11,6 +11,7 @@
 
 html, body {
     overflow-x: hidden;
+    background: #FFFFFF;
 }
 
 a {
@@ -77,6 +78,7 @@ nav a:hover {
     position: relative;
     justify-content: center;
     width: 100%;
+    min-height: max(50vw, 400px);
 }
 
 /* Spiral */
@@ -151,8 +153,8 @@ nav a:hover {
         text-align: center;
     }
 
-    #spiral circle {
-        r: 2px;
+    #spiral use {
+        --r: 2px;
         pointer-events: none;
     }
 
