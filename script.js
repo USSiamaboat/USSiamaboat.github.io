@@ -10,7 +10,7 @@ const GLITCHES = "!@#$%^&[](){}"
 const TITLES = [
     "ML Researcher",
     "Data Scientist",
-    "Quantitative Researcher",
+    "Entrepreneur",
     "Award-Winning Pianist"
 ]
 const MAX_TITLE_LEN = TITLES.reduce((acc, curr) => Math.max(acc, curr.length), 0)
