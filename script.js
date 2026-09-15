@@ -8,6 +8,7 @@ const titleElt = document.getElementById("title")
 const BLANK = "⠀"
 const GLITCHES = "!@#$%^&[](){}"
 const TITLES = [
+    "Quant Trader",
     "ML Researcher",
     "Data Scientist",
     "Entrepreneur",
