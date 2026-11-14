@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mini-AlphaGo</title>
+<meta name="description" content="A scaled-down hybrid of AlphaGo and AlphaGo Zero for 9×9 Go, built by the Michigan Data Science Team.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300..700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #222222;
+    --ink-2: #555555;
+    --muted: #888888;
+    --rule: #e8e8e8;
+    --accent: #7a58dc;
+    --button: #1f1f1f;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: #ffffff;
+    color: var(--ink);
+    font-family: "Noto Sans", sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page { max-width: 920px; margin: 0 auto; padding: 0 16px; }
+
+  /* Header */
+  header { text-align: center; padding: 64px 0 36px; }
+  h1 {
+    font-size: clamp(30px, 5vw, 44px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0 0 8px;
+  }
+  .subtitle { font-size: clamp(18px, 2.6vw, 24px); font-weight: 300; color: var(--ink-2); margin: 0 0 28px; line-height: 1.35; }
+  .authors { margin: 0 auto 6px; max-width: 760px; font-size: 17px; line-height: 1.8; }
+  .authors .name { color: var(--accent); white-space: nowrap; }
+  .authors .lead::after { content: "*"; font-size: 0.75em; vertical-align: super; }
+  .affiliation { color: var(--ink); font-size: 15px; margin: 10px 0 2px; }
+  .note { color: var(--muted); font-size: 13px; margin: 0; }
+  .buttons { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .button {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 18px; border-radius: 999px;
+    background: var(--button); color: #fff; font-size: 15px;
+  }
+  .button:hover { background: #000; text-decoration: none; }
+  .button svg { width: 17px; height: 17px; fill: currentColor; }
+
+  /* Sections */
+  section { border-top: 1px solid var(--rule); padding: 44px 0 40px; }
+  h2 { color: var(--accent); font-size: 26px; font-weight: 400; text-align: center; margin: 0 0 22px; }
+  h3 { font-size: 19px; font-weight: 500; margin: 30px 0 8px; }
+  p { margin: 0 0 16px; }
+  .prose { max-width: 760px; margin: 0 auto; }
+  .prose p { text-align: justify; hyphens: auto; }
+  .tldr { font-size: 18px; text-align: center !important; color: var(--ink-2); }
+  figure { margin: 26px auto 8px; text-align: center; }
+  figure img { display: block; width: 100%; height: auto; margin: 0 auto; }
+  figure.narrow img { max-width: 760px; }
+  figcaption { max-width: 760px; margin: 12px auto 0; color: var(--ink-2); font-size: 15px; line-height: 1.55; text-align: left; }
+  figcaption b { color: var(--ink); font-weight: 600; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 760px; margin: 28px auto 4px; }
+  .stat { text-align: center; }
+  .stat .value { font-size: 34px; font-weight: 300; color: var(--accent); line-height: 1.1; }
+  .stat .label { font-size: 14px; color: var(--ink-2); margin-top: 6px; line-height: 1.4; }
+
+  ul.method { padding-left: 20px; margin: 0 0 16px; }
+  #acknowledgements .prose p { text-align: center; }
+  ul.method li { margin-bottom: 8px; }
+
+  @media (max-width: 600px) {
+    header { padding-top: 40px; }
+    .stats { grid-template-columns: 1fr; }
+    .prose p { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <h1>Mini-AlphaGo</h1>
+  <p class="subtitle">AlphaGo from scratch for 9×9 Go</p>
+  <p class="authors">
+    <span class="name lead">Jeffrey Lu</span>,&ensp;
+    <span class="name lead">Onat Ozer</span>,&ensp;
+    <span class="name">Ali Boussi</span>,&ensp;
+    <span class="name">Adarsh Bharathwaj</span>,&ensp;
+    <span class="name">Xin Ying Chew</span>,&ensp;
+    <span class="name">Gabriel Koo</span>,&ensp;
+    <span class="name">Layne Malek</span>,&ensp;
+    <span class="name">Frank Sun</span>,&ensp;
+    <span class="name">Selina Sun</span>,&ensp;
+    <span class="name">Adam Wood</span>,&ensp;
+    <span class="name">Max Wang</span>
+  </p>
+  <p class="affiliation">Michigan Data Science Team, University of Michigan</p>
+  <p class="note">*Project leads</p>
+  <div class="buttons">
+    <a class="button" href="https://github.com/MichiganDataScienceTeam/W25-mini-alphago/tree/master">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      Code
+    </a>
+  </div>
+</header>
+
+<section id="hero">
+  <figure>
+    <img src="static/win_vs_gnugo10.gif" width="1320" height="709">
+    <figcaption><b>Sample Game:</b> Mini-AlphaGo (White) beats GNU Go at its strongest level by half a point. Mini-AlphaGo's internal estimate of its win probability computed from its search tree is shown on the right.</figcaption>
+  </figure>
+</section>
+
+<section id="overview">
+  <h2>Overview</h2>
+  <div class="prose">
+    <p>
+      Mini-AlphaGo is a hybrid of AlphaGo and AlphaGo Zero written using only computational libraries.
+      As in AlphaGo, a policy-and-value network first learns to imitate moves from online 9×9 games through supervised learning (SL).
+      It then plays thousands of games against itself guided by Monte Carlo tree search (MCTS).
+      Through self-play, Mini-AlphaGo develops a better policy from the search behavior and learns to predict the expected winner at intermediate game states.
+      Everything except core math and ML libraries, including the Go engine, the tree search, the data pipeline, and a web interface for playing against the bot, was written from scratch.
+    </p>
+    <div class="stats">
+      <div class="stat"><div class="value">71%</div><div class="label">win rate vs GNU Go level 10</div></div>
+      <div class="stat"><div class="value">≈150</div><div class="label">Elo above GNU Go level 10</div></div>
+      <div class="stat"><div class="value">3–5 kyu</div><div class="label">estimated amateur rank</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="results">
+  <h2>Playing against GNU Go</h2>
+  <div class="prose">
+    <p>
+      We measured each major version of the bot against GNU Go 3.8, a long-standing open-source Go program, at levels 5 and 10.
+      Every bar is about 100 games, with half played as each color, on a 9×9 board with komi 7.5 and Tromp-Taylor area scoring.
+      The searching bots use 512 searches per move.
+    </p>
+  </div>
+  <figure class="narrow">
+    <img src="static/gnugo_winrates.png" width="1600" height="900">
+    <figcaption>
+      <b>Self-play and search together beat GNU Go level 10 in 71% of games.</b> Supervised learning on human games alone is not enough for Mini-AlphaGo to beat GNU Go. Search also appears to harm SL performance.
+    </figcaption>
+  </figure>
+</section>
+
+<section id="search">
+  <h2>Search is not always helpful</h2>
+  <div class="prose">
+    <p>
+      MCTS reads ahead and scores each line with the value head.
+      The supervised network was trained almost entirely on predicting moves with its policy, so its value head is close to untrained.
+      Searching harder pushes Mini-AlphaGo to depend more on value estimates than policy estimates, so a poor value head is exposed by stronger search.
+      Self-play trains the value head on the outcomes of Mini-AlphaGo's own games, so search allows both policy and value to contribute positively to performance.
+    </p>
+  </div>
+  <figure class="narrow">
+    <img src="static/search_scaling.png" alt="Line chart of win rate against GNU Go level 10 by searches per move. RL network: 36% with no search, 23% at 16, 44% at 32, 52% at 64, 66% at 128, 68% at 256 and 71% at 512. SL network: 20%, 28%, 28%, 23%, 24%, 13% and 9%." width="1600" height="900">
+    <figcaption>
+      <b>More search helps only the network whose value head was trained by self-play.</b> RL sees consistent improvement with stronger search while SL is unable to take advantage of search. Each point is about 100 games.
+    </figcaption>
+  </figure>
+  <div class="prose">
+    <p>
+      The position below shows what this looks like for a single move.
+    </p>
+  </div>
+  <figure>
+    <img src="static/policy_vs_search.png" alt="Three 9×9 boards showing the same position with purple circles sized by each model's preference. The SL network prefers B8, the RL network prefers E7, and RL with 512 searches prefers C6." width="2100" height="819">
+    <figcaption>
+      <b>Search allows policy to propose moves instead of deciding them.</b> Circle size shows how strongly each model prefers each point at move 27.
+      SL policy is concentrated around a few moves because its policy is trained to directly identify the next move.
+      RL policy is more distributed and proposes multiple promising moves.
+      Search evaluates RL policy's promising moves and reaches a clear decision for its next move.
+    </figcaption>
+  </figure>
+</section>
+
+<section id="elo">
+  <h2>Strength over training</h2>
+  <div class="prose">
+    <p>
+      To evaluate training progress, we saved the network every 25 epochs and played every checkpoint against every other with 40 games per pair at 64 searches per move.
+      Elo ratings come from a Bradley-Terry fit to all 840 games.
+    </p>
+  </div>
+  <figure class="narrow">
+    <img src="static/elo_over_training.png" width="1600" height="900">
+    <figcaption>
+      <b>Self-play keeps improving the bot, quickly at first and then steadily.</b>
+      The shaded band is a 95% bootstrap interval over games.
+    </figcaption>
+  </figure>
+</section>
+
+<section id="method">
+  <h2>Method</h2>
+  <div class="prose">
+    <h3>Supervised learning</h3>
+    <p>
+      The network starts by predicting the next move in online 9×9 games.
+      This gives self-play a reasonable starting policy instead of random moves.
+    </p>
+    <h3>Self-play reinforcement learning</h3>
+    <p>Starting from the supervised weights, the bot repeatedly plays itself and trains on the results:</p>
+    <ul class="method">
+      <li><b>Search:</b> Each move uses PUCT tree search guided by the network.</li>
+      <li><b>Targets:</b> The policy learns the search's visit counts and the value learns the final result of each game.</li>
+      <li><b>Data:</b> A replay buffer of the 2048 newest games is maintained with 256 new games added every epoch.</li>
+    </ul>
+    <p>
+      The final RL training ran on a cluster partition with 33 cores of an Intel Xeon Gold 6148, NVIDIA Tesla V100 16GB, and 64 GB of RAM for 24 hours.
+    </p>
+  </div>
+</section>
+
+<section id="acknowledgements">
+  <h2>Acknowledgements</h2>
+  <div class="prose">
+    <p>
+      This project would not have been possible without compute from
+      <a href="https://midas.umich.edu/">MIDAS</a>,
+      <a href="https://its.umich.edu/advanced-research-computing">U-M ARC High Performance Computing</a>,
+      and <a href="https://cloud.google.com">Google Cloud</a>.
+    </p>
+
+    <p>
+        This project was completed in Winter 2025 but was revisited in Fall 2026 with Claude Opus 5.5 to improve training efficiency, re-run RL training with more compute, and evaluate the performance of trained models.
+    </p>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
