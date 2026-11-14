@@ -1,17 +1,18 @@
 # My Portfolio
 
-This is the 2026 revision of my web portfolio, which is a minor revision of the 2025 version.
+This is the 2nd 2026 version of my web portfolio, which is a major revision of the previous 2026 version.
 
 The main changes this time around are:
-- Content updates (though fairly delayed)
-- Better loading order + less page shift on load
-- Optimized prime spiral to reduce the impact on DOM clutter
+- Dramatically simplify the design
+- Add project pages!!! (more coming soon)
+- Cleaner experience overall
 
 At some point soon, I'd like to:
-- Add an experience section (since I actually have stuff to put there now)
-- Choose a new hero graphic that doesn't involve hundreds of interactive DOM elements
+- Finish making project pages
+- Figure out what I should put on my featured section (random stuff right now)
 
-Overcommitted to alot of stuff recently so it will probably be a while before I can do a full redesign,
-but maybe one day I will decide that this looks too much like AI slop and use some generative organic intelligence to make a new site.
+Still overcommitted to alot of stuff so but I did get around to the redesign with 1 year :)
+
+More progress to come
 
 That's all. Thanks for stopping by!

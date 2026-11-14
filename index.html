@@ -1,241 +1,210 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-
-    <base target="_blank">
-
-	<!-- Regular Meta -->
-	<meta charset="UTF-8">
-	<link rel="shortcut icon" href="https://jeffreylu.me/images/Favicon.png">
-	<title>Jeffrey Lu</title>
-	<meta name="description" content="I do computer things">
-
-    <!-- Open graph meta -->
-	<meta property="og:title" content="Jeffrey Lu"/>
-	<meta property="og:site_name" content="Jeffrey Lu">
-
-	<meta property="og:description" content="I do computer things"/>
-	<meta property="og:url" content="https://jeffreylu.me"/>
-
-	<meta property="og:image" content="/images/blank1x1.jpg"/>
-    <meta property="og:image:width" content="0">
-    <meta property="og:image:height" content="0">
-
-    <meta property="og:type" content="website"/>
-
-	<!-- CSS and JS -->
-	<link rel="stylesheet" href="styles.css">
-	<script defer src="script.js"></script>
-
-	<!-- Load spiral before js runs -->
-	<link rel="preload" href="images/precomputed.svg" as="fetch" crossorigin="anonymous">
-
-    <!-- Font loading -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Jeffrey Lu">
+    <meta name="description" content="Jeffrey's personal portfolio">
+    <meta property="og:title" content="Jeffrey Lu">
+    <meta property="og:description" content="Jeffrey's personal portfolio">
+    <meta property="og:url" content="https://jeffreylu.me/">
+    <meta property="og:type" content="website">
+    <title>Jeffrey Lu</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.gstatic.com/s/ibmplexsans/v22/zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYbSB4Zh.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&amp;display=swap">
+    <link rel="stylesheet" href="styles.css">
+    <script src="contact.js" defer></script>
 </head>
 <body>
-    <svg width="0" height="0" style="position: fixed; overflow: hidden;" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <clipPath id="hexagon" clipPathUnits="objectBoundingBox">
-                <path d="M.9912.4719.7669.0282C.7582.0108.7419 0 .7243 0H.2757C.2581 0 .2418.0108.233.0282L.0088.4719C0 .4892 0 .5108.0088.5281L.233.9719C.2418.9892.2581 1 .2757 1H.7243C.7419 1 .7582.9892.7669.9719L.9912.5281C1 .5108 1 .4892.9912.4719Z" />
-            </clipPath>
-        </defs>
-    </svg>
+    <a class="skip-link" href="#about">Skip to content</a>
 
-    <nav>
-        <a target="_self" href="#about">About</a>
-        <a target="_self" href="#projects">Projects</a>
-        <a target="_self" href="#publications">Publications</a>
-        <a target="_self" href="#footer">Contact</a>
-    </nav>
-
-    <div id="hero">
-        <div id="intro">
-            <p id="name">I'm <strong>Jeffrey</strong>,</p>
-            <p id="title">Loading...</p>
-        </div>
-
-        <p id="tooltip" style="display: none;">0</p>
-
-        <p id="spiral-desc">
-            Plot of (r, θ) = (p, p) for prime p with residue classes modulo 44 highlighted. <a href="https://www.3blue1brown.com/lessons/prime-spirals">Learn More</a>
-        </p>
-    </div>
-
-    <section id="about">
-        <p class="title">About</p>
-
-        <p>
-            I study Data Science @ UMich Honors.<br>
-            I’m currently researching at <a href="https://www.lsi.umich.edu/science/our-labs/cianfrocco-lab">UMich LSI</a>,<br>
-            working on Bayesian world models at <a href="https://mdst.club/">MDST</a>,<br>
-            writing articles for the <a href="https://www.michigandaily.com/">Michigan Daily</a>,<br>
-            and contracting for enterprise clients.<br>
-        </p>
-
-        <div id="years">
-            <div class="year">
-                <p>6+</p>
-                <p>Years of<br>Data Science</p>
-            </div>
-
-            <div class="year">
-                <p>5+</p>
-                <p>Years of<br>ML Dev</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <div class="big-projects">
-            <p class="title">Projects</p>
-
-            <div class="big-project">
-                <div class="img-container">
-                    <img src="images/PaperZero.png" alt="A Go bot visual interface next to an annotated diagram of Monte-Carlo tree search">
+    <header class="profile-header" id="hero">
+        <div class="profile-content">
+            <img class="profile-photo" src="assets/me.png" alt="Jeffrey Lu" width="120" height="120">
+            <div class="profile-details">
+                <div class="profile-name">
+                    <h1>Jeffrey Lu</h1>
                 </div>
-                <p class="meta">2026&nbsp;&nbsp;—&nbsp;&nbsp;Project Lead @ <a href="https://mdst.club/">MDST</a></p>
-                <p class="name">PaperZero</p>
-                <p class="desc">
-                    An exploration of latent trajectory diffusion and Monte-Carlo tree search approaches for efficient 2D origami inverse design
-                    with significantly more robust empirical performance on long-horizon targets compared to supervised and RL baselines.
-                </p>
-                <div class="links">
-                    <a href="https://github.com/MichiganDataScienceTeam/W26-PaperZero/blob/main/README.md">Read More</a>
-                    <a href="https://github.com/MichiganDataScienceTeam/W26-PaperZero/tree/main">Source Code</a>
+                <div class="profile-subtitle">Data Science @ UMich</div>
+                <nav class="profile-links" aria-label="Profile links">
+                    <a class="icon-link" href="https://linkedin.com/in/jeffrey-p-lu" aria-label="LinkedIn" title="LinkedIn">
+                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+                    </a>
+                    <a class="icon-link" href="https://github.com/USSiamaboat" aria-label="GitHub" title="GitHub">
+                        <svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                    </a>
+                    <a class="icon-link" href="#footer" aria-label="Contact" title="Contact">
+                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-10 6L2 8V6l10 6 10-6v2z"/></svg>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-container">
+        <section class="about" id="about" aria-label="About">
+            <p>
+                I research with the <a href="https://www.lsi.umich.edu/science/our-labs/cianfrocco-lab">Cianfrocco Lab</a> at the <a href="https://www.lsi.umich.edu">Life Sciences Institute</a>,
+                lead projects for the <a href="https://mdst.club/">Michigan Data Science Team</a>, write for <a href="https://www.michigandaily.com/">The Michigan Daily</a>,
+                and build data systems for clients through <a href="https://tues.tech/">Tuesday Technologies</a>.
+            </p>
+        </section>
+
+        <section id="projects" aria-labelledby="projects-heading">
+            <h2 id="projects-heading">Featured work</h2>
+            <div class="project-grid">
+                <article class="project">
+                    <img class="project-image" src="assets/paperzero.webp" alt="Diagrams of trajectory diffusion, tree search, and a generated paper-folding sequence" width="600" height="400">
+                    <h3><a href="https://github.com/MichiganDataScienceTeam/W26-PaperZero/blob/main/README.md">PaperZero</a></h3>
+                    <p>Inverse design for 2D origami with latent trajectory diffusion and Monte Carlo tree search.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/MichiganDataScienceTeam/W26-PaperZero" aria-label="PaperZero code">Code</a>
+                    </div>
+                </article>
+
+                <article class="project">
+                    <img class="project-image" src="mini-alphago/static/win_vs_gnugo10.gif" alt="A 9 × 9 Go interface alongside a Monte Carlo tree search diagram" width="600" height="400">
+                    <h3><a href="https://github.com/MichiganDataScienceTeam/W25-mini-alphago/blob/master/README.md">Mini-AlphaGo</a></h3>
+                    <p>A 9×9 Go bot reproducing a hybrid of AlphaGo and AlphaGo Zero, beating GNU Go Level 10.</p>
+                    <div class="project-links">
+                        <a href="https://jeffreylu.me/mini-alphago" aria-label="Project Page">Project Page</a>
+                        <a href="https://github.com/MichiganDataScienceTeam/W25-mini-alphago">Code</a>
+                    </div>
+                </article>
+
+                <article class="project">
+                    <img class="project-image" src="assets/tuesday.webp" alt="Tuesday Technologies logo surrounded by colored variants" width="600" height="400">
+                    <h3><a href="https://tues.tech/">Tuesday Technologies</a></h3>
+                    <p>Client work includes LLM knowledge systems, mathematical modeling for business decision-making, and data pipelines.</p>
+                    <div class="project-links">
+                        <a href="https://tues.tech" aria-label="Website">Website</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="publications" aria-labelledby="publications-heading">
+            <h2 id="publications-heading">Publications and writing</h2>
+            <div class="entry-list">
+                <article class="dated-entry">
+                    <p class="entry-date">2025</p>
+                    <div class="entry-content">
+                        <h3><a href="https://www.michigandaily.com/web/data/buying-prestige-on-product-hunt-how-tech-startups-manufacture-artificial-success/">Buying prestige on Product Hunt: How tech startups manufacture artificial success</a></h3>
+                        <p><strong>Jeffrey Lu</strong></p>
+                        <p class="metadata"><em>The Michigan Daily</em> · Data journalism</p>
+                    </div>
+                </article>
+
+                <article class="dated-entry featured">
+                    <p class="entry-date">2024</p>
+                    <div class="entry-content">
+                        <h3><a href="https://link.springer.com/chapter/10.1007/978-3-031-53963-3_23">Deep Manifold Learning for Reading Comprehension and Logical Reasoning Tasks with Polytuplet Loss</a></h3>
+                        <p><strong>Jeffrey Lu</strong>, Ivan Rodriguez</p>
+                        <p class="metadata">Conference paper · Contrastive learning, NLP</p>
+                        <a class="entry-link" href="https://github.com/USSiamaboat/polytuplet-loss" aria-label="Polytuplet Loss code">Code</a>
+                    </div>
+                </article>
+
+                <article class="dated-entry">
+                    <p class="entry-date">2022</p>
+                    <div class="entry-content">
+                        <h3><a href="https://arxiv.org/abs/2212.04285">The Impact of Socioeconomic Factors on Health Disparities</a></h3>
+                        <p>Krish Khanna, <strong>Jeffrey Lu</strong>, Jay Warrier</p>
+                        <p class="metadata">Course paper · Public health</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="experiments-heading">
+            <h2 id="experiments-heading">Mini-Projects</h2>
+            <ul class="project-list">
+                <li>
+                    <span>Fractal Viewer</span>
+                    <div class="resource-links">
+                        <a href="https://jeffreylu.me/Fractal-Viewer/" aria-label="Fractal Viewer demo">Demo</a>
+                        <a href="https://github.com/USSiamaboat/Fractal-Viewer" aria-label="Fractal Viewer code">Code</a>
+                    </div>
+                </li>
+                <li>
+                    <span>Dogsheep Beta</span>
+                    <div class="resource-links">
+                        <a href="https://jeffreylu.me/Dogsheep-Beta/" aria-label="Dogsheep Beta demo">Demo</a>
+                        <a href="https://github.com/USSiamaboat/Dogsheep-Beta" aria-label="Dogsheep Beta code">Code</a>
+                    </div>
+                </li>
+                <li>
+                    <span>Fast Prime Spiral</span>
+                    <div class="resource-links">
+                        <a href="https://github.com/USSiamaboat/USSiamaboat.github.io/tree/dev/primes" aria-label="Fast Prime Spiral code">Code</a>
+                    </div>
+                </li>
+                <li>
+                    <span>Mini-Stocks</span>
+                    <div class="resource-links">
+                        <a href="https://github.com/MichiganDataScienceTeam/F25-Mini-Stocks" aria-label="Mini-Stocks code">Code</a>
+                    </div>
+                </li>
+                <li>
+                    <span>GPT Next Token Tree</span>
+                    <div class="resource-links">
+                        <a href="https://github.com/USSiamaboat/GPT-NTP-Visualizer" aria-label="GPT Next Token Tree code">Code</a>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="education" aria-labelledby="education-heading">
+            <h2 id="education-heading">Education</h2>
+
+            <div class="entry-list">
+                <article class="dated-entry">
+                    <p class="entry-date">2028</p>
+                    <div class="entry-content">
+                        <h3>B.S. Data Science &nbsp;–&nbsp; University of Michigan</h3>
+                        <p class="metadata">
+                            LSA Honors, William J. Branstrom Prize, James B. Angell Scholar<br>
+                            Michigan Data Science Team (MDST), Traders at Michigan (TAM), The Michigan Daily
+                        </p>
+                    </div>
+                </article>
+
+                <article class="dated-entry">
+                    <p class="entry-date">2026</p>
+                    <div class="entry-content">
+                        <h3>Study Abroad &nbsp;–&nbsp; London School of Economics</h3>
+                        <p class="metadata">
+                            National Rail & TFL Enthusiast: Southeastern Railway, District Line, Circle Line, Jubilee Line
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="footer" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Contact</h2>
+            <form class="contact-form" action="https://formspree.io/f/mldnywrv" method="post">
+                <div class="contact-field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" autocomplete="email" maxlength="254" required>
                 </div>
-            </div>
-
-            <div class="big-project">
-                <div class="img-container">
-                    <img src="images/Mini-AlphaGo.png" alt="A Go bot visual interface next to an annotated diagram of Monte-Carlo tree search">
+                <div class="contact-field">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="1" maxlength="500" aria-describedby="contact-status" required></textarea>
                 </div>
-                <p class="meta">2025&nbsp;&nbsp;—&nbsp;&nbsp;Project Lead @ <a href="https://mdst.club/">MDST</a></p>
-                <p class="name">Mini-AlphaGo</p>
-                <p class="desc">
-                    A novel hybrid of AlphaGo and AlphaGo Zero for 9x9 Go using only computational libraries,
-                    including an in-house Go game environment, Monte-Carlo tree search, parallelized training, visual web interface, and Elo-rated bot arena.
-                </p>
-                <div class="links">
-                    <a href="https://github.com/MichiganDataScienceTeam/W25-mini-alphago/blob/master/README.md">Read More</a>
-                    <a href="https://github.com/MichiganDataScienceTeam/W25-mini-alphago/tree/master">Source Code</a>
-                </div>
-            </div>
+                <button type="submit" aria-label="Send message" title="Send message">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"></path><path d="m14 5 7 7-7 7"></path></svg>
+                    <span>Send Message</span>
+                </button>
+                <p id="contact-status" class="contact-status" role="status"></p>
+            </form>
+        </section>
+    </main>
 
-            <div class="big-project">
-                <div class="img-container">
-                    <img src="images/Tuesday.png" alt="Overlapping panels of showing the GUI of the Tuesday web app">
-                </div>
-                <p class="meta">Ongoing&nbsp;&nbsp;—&nbsp;&nbsp;Founder, FDE @ <a href="https://tues.tech">Tuesday Technologies LLC</a></p>
-                <p class="name">Tuesday Technologies</p>
-                <p class="desc">
-                    ML engineering and data science contracting at scale through forward deployed engineering.
-                    Notable projects include an agentic LLM-assisted knowledge management system for domain-specific engineering expertise
-                    and an enterprise-scale data error detection and correction pipeline.
-                </p>
-                <div class="links">
-                    <a href="https://tues.tech">Visit Website</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="mini-projects">
-
-            <!-- The seemingly strange order of these elements
-             is actually just left to right, top to bottom order -->
-
-            <div class="hover-shadow left"><div class="mini-project">
-                <img src="images/Fractals.gif" loading="lazy">
-                <p class="name">Fractal Viewer</p>
-                <a href="https://jeffreylu.me/Fractal-Viewer/" class="no-mobile">Demo</a>
-                <a href="https://github.com/USSiamaboat/Fractal-Viewer">Source Code</a>
-            </div></div>
-
-            <p class="title">Mini-Projects</p>
-
-            <div class="hover-shadow right"><div class="mini-project">
-                <img src="images/Dogsheep.gif" loading="lazy">
-                <p class="name">Dogsheep Beta</p>
-                <a href="https://jeffreylu.me/Dogsheep-Beta/">Demo</a>
-                <a href="https://github.com/USSiamaboat/Dogsheep-Beta">Source Code</a>
-            </div></div>
-
-            <div class="hover-shadow left"><div class="mini-project">
-                <img src="images/Primes.gif" loading="lazy">
-                <p class="name">Fast Prime Spiral</p>
-                <a href="#hero" target="_self">Demo</a>
-                <a href="https://github.com/USSiamaboat/USSiamaboat.github.io/blob/dev/primes">Source Code</a>
-            </div></div>
-
-            <div class="hover-shadow center"><div class="mini-project one-link">
-                <img src="images/Mini-Stocks.gif" loading="lazy">
-                <p class="name">Mini-Stocks</p>
-                <a href="https://github.com/MichiganDataScienceTeam/F25-Mini-Stocks">Source Code</a>
-            </div></div>
-
-            <div class="hover-shadow right"><div class="mini-project one-link">
-                <img src="images/GPT NTP.gif" loading="lazy">
-                <p class="name">GPT Next Token Tree</p>
-                <a href="https://github.com/USSiamaboat/GPT-NTP-Visualizer">Source Code</a>
-            </div></div>
-
-        </div>
-    </section>
-
-    <section id="publications">
-        <p class="title">Publications</p>
-
-        <div class="publication">
-            <p class="meta">2025&nbsp;&nbsp;—&nbsp;&nbsp;Data Journalism (The Michigan Daily)</p>
-            <p class="name">Buying prestige on Product Hunt: How tech startups manufacture artificial success</p>
-            <p class="authors">Jeffrey Lu</p>
-            <p class="keywords">Data Science, Entrepreneurship</p>
-            <div class="links">
-                <a href="https://www.michigandaily.com/web/data/buying-prestige-on-product-hunt-how-tech-startups-manufacture-artificial-success/">Read More</a>
-            </div>
-        </div>
-
-        <div class="publication">
-            <p class="meta">2024&nbsp;&nbsp;—&nbsp;&nbsp;Conference Paper</p>
-            <p class="name">Deep Manifold Learning for Reading Comprehension and Logical Reasoning Tasks with Polytuplet Loss</p>
-            <p class="authors">Jeffrey Lu, Ivan Rodriguez</p>
-            <p class="keywords">Contrastive Learning, Deep Learning, NLP</p>
-            <div class="links">
-                <a href="https://link.springer.com/chapter/10.1007/978-3-031-53963-3_23">Read More</a>
-                <a href="https://github.com/USSiamaboat/polytuplet-loss">Source Code</a>
-            </div>
-        </div>
-
-        <div class="publication">
-            <p class="meta">2022&nbsp;&nbsp;—&nbsp;&nbsp;Course Paper&nbsp;&nbsp;(first available online in 2023)</p>
-            <p class="name">The Impact of Socioeconomic Factors on Health Disparities</p>
-            <p class="authors">Krish Khanna, Jeffrey Lu, Jay Warrier</p>
-            <p class="keywords">Data Science, Public Health</p>
-            <div class="links">
-                <a href="https://arxiv.org/abs/2212.04285">Read More</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="footer">
-        <div id="form">
-            <input type="email" id="email" placeholder="Email" autocomplete="off" maxlength="50">
-            <input type="text" id="message" placeholder="A short message" autocomplete="off" maxlength="500">
-            <button id="submit">
-                <img src="images/Submit.svg" alt="Submit">
-            </button>
-        </div>
-
-        <div id="extras">
-            <p>© Jeffrey Lu 2026. Made from scratch by hand.</p>
-
-            <a href="https://linkedin.com/in/jeffrey-p-lu">Linkedin</a>
-            <a href="https://github.com/USSiamaboat">Github</a>
-        </div>
-    </section>
+    <footer class="page-container site-footer">
+        <p>© 2026 Jeffrey Lu</p>
+    </footer>
 </body>
 </html>
